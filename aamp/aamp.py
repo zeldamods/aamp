@@ -203,16 +203,6 @@ class Reader:
     def _register_string(self, s: str) -> None:
         self._crc32_to_string_map[zlib.crc32(s.encode())] = s
 
-# _NodeToOffsetMap = typing.Dict[typing.Tuple[ParameterType, int], int]
-def _hash(o):
-    def _freeze(o):
-        if isinstance(o, dict):
-            return frozenset({ k: _freeze(v) for k,v in o.items()}.items())
-        if isinstance(o, list):
-            return tuple([_freeze(v) for v in o])
-        return o
-    return hash(_freeze(o))
-
 class _ListWriteContext(typing.NamedTuple):
     list_offset_writer: PlaceholderOffsetWriter
     obj_offset_writer: PlaceholderOffsetWriter
