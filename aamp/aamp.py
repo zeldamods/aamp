@@ -113,7 +113,11 @@ class Reader:
             raise NotImplementedError('Curve parameters are not supported')
 
         elif param_type == ParameterType.Quat:
-            raise NotImplementedError('Quat parameters are not supported')
+            # Quat parameters receive additional processing after being loaded:
+            # depending on what parameters are passed to the apply function,
+            # there may be linear interpolation going on.
+            # We currently ignore all of that stuff.
+            value = Quat(*[get_f32(self._data, data_offset + 4*i) for i in range(4)])
 
         elif param_type == ParameterType.Int:
             value = get_s32(self._data, data_offset)
