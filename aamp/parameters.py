@@ -61,7 +61,7 @@ class ParameterList:
         """Add or update an existing object."""
         self.objects[zlib.crc32(name.encode())] = pobj
 
-    def set_list(self, name: str, plist: ParameterList) -> None:
+    def set_list(self, name: str, plist) -> None:
         """Add or update an existing list."""
         self.lists[zlib.crc32(name.encode())] = plist
 
