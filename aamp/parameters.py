@@ -37,6 +37,10 @@ class ParameterObject:
     def param(self, name: str):
         return self.params[zlib.crc32(name.encode())]
 
+    def set_param(self, name: str, v) -> None:
+        """Add or update an existing parameter."""
+        self.params[zlib.crc32(name.encode())] = v
+
     def __repr__(self) -> str:
         return f'ParameterObject(params={repr(self.params)})'
 
@@ -52,6 +56,14 @@ class ParameterList:
 
     def list(self, name: str):
         return self.lists[zlib.crc32(name.encode())]
+
+    def set_object(self, name: str, pobj: ParameterObject) -> None:
+        """Add or update an existing object."""
+        self.objects[zlib.crc32(name.encode())] = pobj
+
+    def set_list(self, name: str, plist: ParameterList) -> None:
+        """Add or update an existing list."""
+        self.lists[zlib.crc32(name.encode())] = plist
 
     def __repr__(self) -> str:
         return f'ParameterList(objects={repr(self.objects)}, lists={repr(self.lists)})'
