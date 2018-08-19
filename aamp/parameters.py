@@ -130,6 +130,17 @@ class U32(int):
     def __repr__(self) -> str:
         return f'U32({self})'
 
+class Quat:
+    __slots__ = ['a', 'b', 'c', 'd']
+    def __init__(self, a=0.0, b=0.0, c=0.0, d=0.0) -> None:
+        self.a = a
+        self.b = b
+        self.c = c
+        self.d = d
+
+    def __repr__(self) -> str:
+        return f'Quat({self.a},{self.b},{self.c},{self.d})'
+
 def value_to_bytes(v: typing.Any) -> typing.Tuple[ParameterType, bytes]:
     if isinstance(v, bool):
         return (ParameterType.Bool, u32(v))
@@ -147,6 +158,8 @@ def value_to_bytes(v: typing.Any) -> typing.Tuple[ParameterType, bytes]:
         return (ParameterType.Vec4, f32(v.x) + f32(v.y) + f32(v.z) + f32(v.w))
     if isinstance(v, Color):
         return (ParameterType.Color, f32(v.r) + f32(v.g) + f32(v.b) + f32(v.a))
+    if isinstance(v, Quat):
+        return (ParameterType.Quat, f32(v.a) + f32(v.b) + f32(v.c) + f32(v.d))
     if isinstance(v, String32):
         return (ParameterType.String32, string(v))
     if isinstance(v, String64):
