@@ -110,7 +110,11 @@ class Reader:
         or param_type == ParameterType.Curve2 \
         or param_type == ParameterType.Curve3 \
         or param_type == ParameterType.Curve4:
-            raise NotImplementedError('Curve parameters are not supported')
+            num_curves = self._get_param_data_size(offset) // 0x80
+            value = Curve()
+            for i in range(num_curves):
+                value.v.extend(get_u32(self._data, data_offset + 0x80*i + 4*x) for x in range(2))
+                value.v.extend(get_f32(self._data, data_offset + 0x80*i + 8 + 4*x) for x in range(30))
 
         elif param_type == ParameterType.Quat:
             # Quat parameters receive additional processing after being loaded:

@@ -141,6 +141,11 @@ class Quat:
     def __repr__(self) -> str:
         return f'Quat({self.a},{self.b},{self.c},{self.d})'
 
+class Curve:
+    __slots__ = ['v']
+    def __init__(self, v=None) -> None:
+        self.v = v if v else []
+
 def value_to_bytes(v: typing.Any) -> typing.Tuple[ParameterType, bytes]:
     if isinstance(v, bool):
         return (ParameterType.Bool, u32(v))
@@ -160,6 +165,16 @@ def value_to_bytes(v: typing.Any) -> typing.Tuple[ParameterType, bytes]:
         return (ParameterType.Color, f32(v.r) + f32(v.g) + f32(v.b) + f32(v.a))
     if isinstance(v, Quat):
         return (ParameterType.Quat, f32(v.a) + f32(v.b) + f32(v.c) + f32(v.d))
+    if isinstance(v, Curve):
+        buf = b''
+        for item in v.v:
+            if isinstance(item, int):
+                buf += u32(item)
+            elif isinstance(item, float):
+                buf += f32(item)
+            else:
+                raise ValueError('Invalid item in curve parameter')
+        return (ParameterType(ParameterType.Curve1 + (len(buf) // 0x80) - 1), buf)
     if isinstance(v, String32):
         return (ParameterType.String32, string(v))
     if isinstance(v, String64):
