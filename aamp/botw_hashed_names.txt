@@ -67,6 +67,7 @@
 00A
 00b
 00D
+ラフネス(0.0:粗い)によるマスク
 0_1
 0100600
 ギア0,ギア1,ギア2,ギア3,ギア4
@@ -85,9 +86,11 @@ _%02d
 %02d%s%02d
 %02d%s%02d%s%02d
 02n
+%02u:%02u
 %02u-%02u-%04u
 %02u/%02u/%04u
 %02u.%02u.%04u
+%02u:%02u %s
 %02x
 03B
 03C
@@ -276,6 +279,7 @@ _%04d_%02d%02d_%02d%02d%02d%s.tga
 0o5
 0O5
 0o8
+0:off
 0oG
 0oi
 0oV
@@ -366,7 +370,10 @@ _%04d_%02d%02d_%02d%02d%02d%s.tga
 0X0
 0x%08x
 0x1
+0x168fbc16-0x468f6ab0:2018-01-31.Cloth.Nintendo_NINTENDO_001_WiiU
+0x43585160-0x135887c6:2018-01-31.Ai.Nintendo_NINTENDO_001_WiiU
 0X6
+0x7b508051-0x2b5056f7:2018-01-31.Physics_2012.Nintendo_NINTENDO_001_WiiU
 0xB
 0xC
 0xo
@@ -456,6 +463,7 @@ _%04d_%02d%02d_%02d%02d%02d%s.tga
 1.#INF00
 @1J
 1mあたりの加算落下ダメージ量
+1:on
 1q7
 -1.#QNAN0
 1.#QNAN0
@@ -525,6 +533,7 @@ _%04d_%02d%02d_%02d%02d%02d%s.tga
 3DMap_ModelName
 3DMap_PaneUse
 3EtC
+%.3f : %s
 3Gear
 3KZE
 3nNE
@@ -1121,9 +1130,13 @@ aabbTree
 aal_custom_curve
 aal_debug_file_io
 @aalDummy
+aal::Emitter
 aal_hostpc
+aal::LowPrioWorkerThread
 aal_rolloff_curve
+aal::SDKFoundation::LauncherThread
 aal_unit_distance_curve
+aal::VirtualSurroundCtrl
 aAnD
 aaPE
 @aB
@@ -1237,6 +1250,8 @@ Act_Checkup
 Act_Cleaning_Floor
 Act_Cleaning_Floor_Notice
 Act_Cleaning_Floor_NoticeBack
+act::ClusteredRenderer
+act::ClusteredRenderer - DL Heap
 Act_Cough
 Act_Cry
 Act_Dance
@@ -1285,6 +1300,7 @@ ActionName
 ActionRate
 actions
 Actions
+action::SwitchPlayerEquipment
 ActionTime
 ActionTimePlay
 ActionType
@@ -1452,6 +1468,7 @@ Actor/XLink/XLinkInfo.byml
 Actorメモリ枯渇
 Act_Pain_Talk
 Act_Pain_Wait
+act::PhysicsUserTag
 Act_Please_Hand
 Act_Please_Hand_Back
 Act_Please_Hand_Ed
@@ -1607,6 +1624,7 @@ AdjustRadius
 AdjustToTextMargin
 AdjustToTextMinSize
 AdjustToTextOn
+Adobe APP14 marker: version %d, flags 0x%04x 0x%04x, transform %d
 ADT
 advanced
 AdvanceStep
@@ -1668,24 +1686,33 @@ aglcube
 AglDebugCameraBoard
 agldecd
 agl_default
+agl::detail::ShaderHolder
 agldof
 aglenv
+agl::env::CubeMap
 aglenvset
 aglfila
 aglflr
 aglglr
 agl_hostpc
+agl::lght::LightPrePass
 agllmap
 agllref
+agl::lyr::Renderer::begin
+agl::lyr::Renderer::end
 aglmf
 aglNmdw
 aglofx
+agl::pfx::ColorCorrection
 aglprojsdw
+agl::RenderDisplay(color)
+agl::RenderDisplay(depth)
 %AGL_ROOT%/tools/bat/perforce_save.bat
 %AGL_ROOT%/tools/bin/Win32/aglParameterBinaryConverter.exe
 %AGL_ROOT%/tools/temporary
 %%AGL_ROOT%%/tools/temporary/param_temp.b%s
 aglsdw
+agl::sdw::SSAO
 agl_sharc
 agl_sharc_num
 aglshpp
@@ -1696,7 +1723,11 @@ agl_technique_lght
 agl_technique_lght_lpp
 agl_technique_pfx
 agl_technique_shdw
+agl::TextureData
+agl::TextureSampler
+agl::utl::PrimitiveTexture
 aglvolm
+agl::WorkHeap
 AglXml
 agstats
 AHST
@@ -1843,6 +1874,7 @@ allMatricesAreAffine
 AllMute
 _A_LL_Nest
 _A_LL_Nest_01
+Alloc: %2d / %2d
 AllocatorClass
 alloc_from_mem1
 alloc_without_ctx
@@ -2451,6 +2483,7 @@ applyBatchDatas
 applyCallbacks
 applyDatas
 ApplyForceValue
+ApplyHeightData : %d(%s)
 ApplyHorizontalImpulse
 applyKinematicConstraints
 applyLinearImpulse
@@ -2505,6 +2538,7 @@ Arctic
 Ard
 area
 Area
+Area :
 Area_%04d
 AreaActorObserveByActorTag
 AreaActorObserveByGroup
@@ -2512,6 +2546,7 @@ area_array
 AreaBase
 AreaBottomTag
 AreaBox
+Area : %c%d
 AreaCheck
 AreaCol
 Area_Col
@@ -3267,6 +3302,7 @@ AtvKeyActorSaveDataIndex
 AtX
 AtY
 AtZ
+ケミカルAtによる追加ダメージを受けるか(Ex:ロッドの玉)
 audc
 Audio
 Audio5_1ch
@@ -3534,6 +3570,7 @@ BackPack_Spine_2
 back_pixel_thre
 Back_Run_Start
 Back_Run_Start_NoShield
+BackScale:%f
 BackseatKorok
 BackseatKorokLight
 BackseatKorokWait
@@ -3868,7 +3905,12 @@ BasePosOffsetFront
 BaseProcCreate
 BaseProcHandle
 BaseProcInitializer
+BaseProcJobQue::pushJobQueue
 BaseProcMgr
+BaseProcUnit:%p BaseProc(%s:%p)
+BaseProcUnit:%p, %p
+BaseProcUnit:(%p:%p), BaseProc:(%s:%p), 残りBaseProc(%s:%p)
+BaseProcUnit:(%p, %p), 呼び出し(%p)
 BaseProc生成リクエスト数
 BaseRagdollRigidBodyName
 base_reso_height
@@ -4389,6 +4431,7 @@ bloom_compose
 BloomComposeColor
 BloomComposeColorNoUse_8_8
 bloom_correct_depth
+bloom:%d
 bloom_ex
 bloom_ex_tgt
 bloom_gaussian
@@ -4437,6 +4480,7 @@ Blur0(SSAO)
 Blur1(SSAO)
 blur_after_flare
 blur_color
+blur:%d
 Blur_Default
 blur_edge_color
 blur_edge_level
@@ -4519,6 +4563,7 @@ BodyName
 BodyParamList
 BodyParts
 BodyParts_00
+BodyPositionYPID : %f, %f, %f
 BodyRadius
 BodyRootBoneName
 BodyRope
@@ -4607,11 +4652,13 @@ bonePlanes
 BonePrefix
 BoneRotate
 bones
+bone:%s
 Bones
 bonesBuffer
 boneSections
 boneSetId
 boneSets
+bone:%s(key:%s)
 boneSpaceDeformer
 BoneStandAddRatio
 boneToRigidBodyMap
@@ -5290,6 +5337,7 @@ CameraAbyss
 CameraAiming
 CameraAiming2
 camera_at
+camera_at:
 camera_backto_game
 camera_birdeye
 CameraBow
@@ -5348,6 +5396,7 @@ CameraFollowPosCushionZStart
 CameraFollowPosCushionZWheelie
 CameraFollowRotCushion
 CameraForStudentC
+camera_fov:
 camera_fovy_radian
 Camera_Front
 CameraGameRoot
@@ -5421,6 +5470,7 @@ camera_point_rutoa
 camera_point_takka
 camera_point_toon
 camera_pos
+camera_pos:
 CameraPower
 camera_PrinceM_0
 camera_PrinceM_Fix
@@ -5680,6 +5730,7 @@ Category
 CategoryDefine_%d
 CategoryDefines
 CategoryIcon
+Caution: quantization tables are too coarse for baseline JPEG
 Caw_
 @cb
 Cb_AncientWeaponPowUp
@@ -5712,6 +5763,8 @@ cBrushStroke
 Cb_Terror
 Cb_TerrorAndNightMoveSpeedUp
 %c-%c
+cCalcPrio_PlayerAfter::preCalc
+cCalcPrio_PlayerBefore::preCalc
 cCalcSHParam
 cCameraParam
 cCamWorld
@@ -5847,6 +5900,7 @@ Center of Mass
 centerOfMass0
 centerOfMass1
 centerOfMassLocal
+' : Center Of Mass seems to be outside the object. Looks like the convex hull of the object is corrupted. (
 CenterPos
 CenterPosAlphaPow
 CenterPosAlphaRate
@@ -6510,12 +6564,21 @@ Chirp
 ChmArmLName
 ChmArmRName
 ChmCheck
+chm::Element(Box)
+chm::Element(Cupsule)
+chm::Element(Cylinder)
+chm::Element(CylinderElectricWater)
+chm::Element(Other)
+chm::Element(Sphere)
+chm::Element(SphereElectricAir)
+chm::Element(SphereElement)
 ChmicalPlusASName
 ChmName1
 ChmObjectName
 ChmObjName
 chmres
 chmshp
+chm::System
 ChmType
 ChmVolRateCheck
 ChmVolRateCheckBlankOk
@@ -6771,6 +6834,7 @@ cLinearDepthTexture
 cLineNum
 clipBoundaries
 ClipIndex
+clip min x:%f max x:%f min y:%f max y:%f
 , clipping
 clip_plane
 clock
@@ -7148,6 +7212,8 @@ Combination
 CombinationHeap
 ComboSelector
 Command
+Command0: %4d / %4d
+Command1: %4d / %4d
 CommanderID
 commands
 CommandTiming
@@ -7325,6 +7391,7 @@ ComplexTag
 CompOff
 Component
 COMPONENT_BITANGENT
+Component index %d: mismatching sampling ratio %d:%d, %d:%d, %c
 COMPONENT_INVTRANSPOSE
 componentMap
 COMPONENT_NORMAL
@@ -7670,6 +7737,11 @@ CorrectRatioB
 CorrectRatioC
 correctRot
 correspondingAngLimitSolverResultOffset
+Corrupt JPEG data: bad arithmetic code
+Corrupt JPEG data: bad Huffman code
+Corrupt JPEG data: found marker 0x%02x instead of RST%d
+Corrupt JPEG data: premature end of data segment
+Corrupt JPEG data: %u extraneous bytes before marker 0x%02x
 cos
 cosClimbingEdgeAlignmentAngle
 cosClimbingFaceNormalAlignmentAngle
@@ -8418,6 +8490,7 @@ d16
 d1n
 d1w
 d1Z
+d: %.2f～%.2f
 D2X
 d~3
 D~3
@@ -8596,6 +8669,7 @@ Data0%d
 Data1%d
 data_buffer
 DataName
+DataNum : %u
 dataRuns
 DataSet %d
 dataType
@@ -8646,6 +8720,7 @@ dd4
 dd6
 Dd6
 %d_%d_%d_%p
+%d : depth
 DDhl
 ddj
 dDk
@@ -8952,6 +9027,7 @@ DeferredTypeC
 DeferredTypeD
 DeferredUI
 DefEscapeFreeMoveAction
+Define Arithmetic Table 0x%02x: 0x%02x
 Define Huffman Table 0x%02x
 Define Quantization Table %d  precision %d
 Define Restart Interval %u
@@ -12224,6 +12300,7 @@ DesiredDirAngleDeltaSecMax
 desiredFacesPerCluster
 desiredSpeed
 desiredSpeedAtEnd
+Desired Speed : %f
 desiredTrisPerChunk
 desiredVelocity
 destained
@@ -12649,6 +12726,7 @@ displayVertexSelection
 DispMode
 DispName
 Dist
+dist:%.2f
 distance
 Distance
 DISTANCE
@@ -12851,6 +12929,7 @@ Dm663_Npc_Gerudo_S_E_DispNameFlag
 Dm663_Npc_Gerudo_S_F_DispNameFlag
 Dm_Animal_Heron_A
 Dm_Armor_115_Head
+%d : mask
 Dm_DLC_GerudoBigPointLight_A_01_DispNameFlag
 Dm_DLC_GerudoBigPointLight_B_01_DispNameFlag
 Dm_GameROMMotorcycle
@@ -13074,6 +13153,7 @@ dP6
 dPJ
 DPj
 DPJo
+%d, ( %p:%p )
 dp.tga
 dpu
 Dpu
@@ -13178,6 +13258,7 @@ DragonReleaseGrudgeForDemo
 DragonReturn
 DragonThunderBall
 DragonTurn
+%d : raw
 Draw
 DrawBlade1__Blade1
 DrawBlade2__Blade2
@@ -13314,6 +13395,7 @@ DrownDepth
 DrownHeight
 DrowningDeath
 drS
+%d : %s
 %d_%s
 %d/%s
 %d%s
@@ -13677,6 +13759,7 @@ DZl
 dzP
 dZR
 DԀ
+%d : リソースが不正です。
 @e@
 @E@
 _e0
@@ -13784,6 +13867,7 @@ edgeConnectionIterations
 edgeCost
 edgeCutoffRange
 edgeCutoffThreshold
+edge:%d
 edgeData
 edgeDataStriding
 edge_detect_type
@@ -13920,6 +14004,7 @@ eff_metaball_normal
 eff_offscr
 EfLocater_Grudge
 efRD
+eft::InfoData
 eftSysten InDoor
 EIGHT_BLEND
 eightBlendEntries
@@ -17210,8 +17295,16 @@ EVFLxW
 EvGH
 EvnF
 EvoL
+Evt:カスタム
 EvtBack
+Evt:Bgmミュート
+Evt:Bgm抑制
+Evt:Env抑制
+evt::InfoData
 evtm
+evt::Manager
+Evt:Worldミュート
+Evt:カスタム予備
 @ew
 Ex45
 exactInternalVertexHandling
@@ -17586,6 +17679,7 @@ FallWaitCount
 FALR
 FALRMR
 false
+: false
 False
 FALSE
 FamiliarityEffectDelayFrames
@@ -18968,6 +19062,7 @@ ForbidSpinturnAngleRange
 ForbidSystemDeleteDistance
 ForbitAngMax
 ForbitAngMin
+ForbitCounter:%4.1f
 forceAlign
 Force_All
 ForceApplyPushAnm
@@ -19335,6 +19430,7 @@ FourthBeam
 FourthStepDist
 FourthStepHeight
 fov
+FovScale:%f
 fovy
 Fovy
 プローブカリングのFovy
@@ -19375,9 +19471,11 @@ FRACTURE_GRAPHICS
 FRACTURE_PHYSICS
 Fragment
 frame
+frame:
 Frame
 frameBatchDatas
 frame_blank
+frame_blank:
 FrameBufferAlpha
 frame_buffer_flip_y
 FrameBufferMultiFilter
@@ -19389,6 +19487,7 @@ frameDatas
 frameDuration
 frameMarkerPsiSnap
 frame_num
+frames:
 FramesActive
 FramesCooldownFeedback
 FramesDelayRoll
@@ -19467,6 +19566,7 @@ frictionStatus
 Friday
 FriendCallAction
 FriendTickRate
+frm::BaseProcLink
 FrogPonteFinish
 FrogPonteReady
 from
@@ -19713,6 +19813,7 @@ GameReady_Npc_Goron_Camp001_Talk
 GameReady_Npc_Goron_Camp002_Talk
 GameReady_Npc_Goron_Camp003_Talk
 GameResident
+game::ResourceSystem
 GameROMロゴ
 GameRomCamera
 GameRomHorse
@@ -19747,6 +19848,8 @@ GameROMMotorcycle
 GameROMPlayer
 GameScene
 GameScene_Debug
+GameScene::initialize
+GameScene::initializeGraphicsLayer_
 GameScene_Layout
 GameScen TaskMgr
 Game_shieldfireworks
@@ -19895,6 +19998,9 @@ g_buffer_depth
 g_buffer_depth_mask
 GBuffer(Emission)
 GBufferでマテリアルIDを使用
+GBuffer::Invalidate(Full)
+GBuffer::Invalidate(Half)
+GBuffer::Invalidate(PreShading)
 G-BufferMask
 G-BufferMask(Pre)
 GBuffer(MaterialID)
@@ -20198,6 +20304,7 @@ getEmissionScale
 getenv
 getFadeCurveType
 getFadeInTime
+getFloat_: invalid referenceType(%d)
 GetFlower_Npc_SouthernVillage015_Talk
 GetFlower_Npc_SouthernVillage016_Talk
 getForceCalc
@@ -20306,6 +20413,22 @@ getVolumeTv
 Get_WallCrack_Cops
 GetWeaponEquip
 Get_ZoraWeapon
+gfx::Barrior
+gfx::DepthAnalyzer(data0)
+gfx::DepthAnalyzer(data1)
+gfx::ForestRenderer
+gfx::GrudgeRenderer
+gfx::IDAnalyzer(color0)
+gfx::IDAnalyzer(color_reduce)
+gfx::IDAnalyzer(depth_reduce)
+gfx::IDAnalyzer(pixel_reduce_count)
+gfx::Invalidate
+gfx::LightAnalyzer(cubemap)
+gfx::LightAnalyzer(shading)
+gfx::MapRenderer(Depth)
+gfx::MapRenderer(Final)
+gfx::NoiseGauge
+gfx::System
 GfxSystem
 Ghost
 Ghost2
@@ -20714,6 +20837,7 @@ Graphics
 GraphicsSystem
 grass
 Grass
+grass: %02x %02x
 GrassAlb
 GrassBurning
 Grass- Collision
@@ -20849,6 +20973,7 @@ GROUP_DUMMY
 Grouping
 GroupName
 GroupRadius
+Group:%s
 GROUP_SIZE_1
 GROUP_SIZE_16
 GROUP_SIZE_4
@@ -20972,6 +21097,7 @@ GSSAPI
 GST
 gsys
 GSys
+GSys:モデルリグ
 GSYS
 gsys_alpha_test_enable
 gsys_alpha_test_func
@@ -21079,7 +21205,9 @@ gsys_gbuffer_xlu
 gsys_gbuffer_xlu_opa
 /GSys/gsys_resource.%s.%s
 gsys_half_normalized_linear_depth
+gsys::IModelProcedural
 gsys_invalid
+gsys::Layer3D
 gsys_light_diffuse
 gsys_lightmap_diffuse
 gsys_lightmap_specular
@@ -21101,6 +21229,16 @@ gsys_priority
 gsys_priority_hint
 gsys_projection0
 gsys_projection1
+gsys::RenderBuffer::color
+gsys::RenderBuffer::color(AA)
+gsys::RenderBuffer::color(half)
+gsys::RenderBuffer::color(ReduceBuffer)
+gsys::RenderBufferContext::Depth(half)
+gsys::RenderBufferContext::Depth(quat)
+gsys::RenderBufferContext::NLD
+gsys::RenderBufferContext::NLD(half)
+gsys::RenderBufferContext::NLD(quat)
+gsys::RenderBuffer::depth
 gsys_renderstate
 gsys_render_state_blend_mode
 gsys_render_state_display_face
@@ -21117,7 +21255,15 @@ gsys_sssss
 gsys_static_depth_shadow
 gsysStaticDepthShadow
 gsys_static_depth_shadow_only
+gsys::SystemTask
 GSysSystemTask
+gsys::SystemTask::DrawDRC
+gsys::SystemTask::DrawTV
+gsys::SystemTask::PostCalc
+gsys::SystemTask::PostDrawDRC
+gsys::SystemTask::PostDrawTV
+gsys::SystemTask::preCalc_
+gsys::SystemTask::PreCalc
 gsys_user0
 gsys_user1
 gsys_user2
@@ -21552,7 +21698,12 @@ HandAppear
 handbrakeButtonPressed
 HandL
 Handle
+HandleELink::fadeIfLoopEffect(%s)
+HandleELink::fade(%s)
+HandleELink::kill(%s)
 HANDLE_INTERNAL_VERTICES
+HandleSLink::fadeIfLoopSound(%s)
+HandleSLink::fade(%s)
 HandlingRateCoefficient
 HandlingRateReturnSpeed
 HandR
@@ -21867,22 +22018,29 @@ hclAction
 hclAntiPinchConstraintSet
 !hclAntiPinchConstraintSet
 hclAntiPinchConstraintSetPerParticle
+!hclAntiPinchConstraintSet::PerParticle
 hclBendLinkConstraintSet
 !hclBendLinkConstraintSet
 hclBendLinkConstraintSetLink
+!hclBendLinkConstraintSet::Link
 hclBendLinkConstraintSetMx
 !hclBendLinkConstraintSetMx
 hclBendLinkConstraintSetMxBatch
+!hclBendLinkConstraintSetMx::Batch
 hclBendLinkConstraintSetMxSingle
+!hclBendLinkConstraintSetMx::Single
 hclBendLinkSetupObject
 !hclBendLinkSetupObject
 hclBendStiffnessConstraintSet
 !hclBendStiffnessConstraintSet
 hclBendStiffnessConstraintSetLink
+!hclBendStiffnessConstraintSet::Link
 hclBendStiffnessConstraintSetMx
 !hclBendStiffnessConstraintSetMx
 hclBendStiffnessConstraintSetMxBatch
+!hclBendStiffnessConstraintSetMx::Batch
 hclBendStiffnessConstraintSetMxSingle
+!hclBendStiffnessConstraintSetMx::Single
 hclBendStiffnessSetupObject
 !hclBendStiffnessSetupObject
 hclBlendSetupObject
@@ -21890,28 +22048,45 @@ hclBlendSetupObject
 hclBlendSomeVerticesOperator
 !hclBlendSomeVerticesOperator
 hclBlendSomeVerticesOperatorBlendEntry
+!hclBlendSomeVerticesOperator::BlendEntry
 hclBonePlanesConstraintSet
 !hclBonePlanesConstraintSet
 hclBonePlanesConstraintSetBonePlane
+!hclBonePlanesConstraintSet::BonePlane
 hclBonePlanesSetupObject
 !hclBonePlanesSetupObject
 hclBonePlanesSetupObjectGlobalPlane
+!hclBonePlanesSetupObject::GlobalPlane
 hclBonePlanesSetupObjectPerParticleAngle
+!hclBonePlanesSetupObject::PerParticleAngle
 hclBonePlanesSetupObjectPerParticlePlane
+!hclBonePlanesSetupObject::PerParticlePlane
 hclBoneSpaceDeformer
 !hclBoneSpaceDeformer
 hclBoneSpaceDeformerFourBlendEntryBlock
+!hclBoneSpaceDeformer::FourBlendEntryBlock
 hclBoneSpaceDeformerLocalBlockP
+!hclBoneSpaceDeformer::LocalBlockP
 hclBoneSpaceDeformerLocalBlockPN
+!hclBoneSpaceDeformer::LocalBlockPN
 hclBoneSpaceDeformerLocalBlockPNT
+!hclBoneSpaceDeformer::LocalBlockPNT
 hclBoneSpaceDeformerLocalBlockPNTB
+!hclBoneSpaceDeformer::LocalBlockPNTB
 hclBoneSpaceDeformerLocalBlockUnpackedP
+!hclBoneSpaceDeformer::LocalBlockUnpackedP
 hclBoneSpaceDeformerLocalBlockUnpackedPN
+!hclBoneSpaceDeformer::LocalBlockUnpackedPN
 hclBoneSpaceDeformerLocalBlockUnpackedPNT
+!hclBoneSpaceDeformer::LocalBlockUnpackedPNT
 hclBoneSpaceDeformerLocalBlockUnpackedPNTB
+!hclBoneSpaceDeformer::LocalBlockUnpackedPNTB
 hclBoneSpaceDeformerOneBlendEntryBlock
+!hclBoneSpaceDeformer::OneBlendEntryBlock
 hclBoneSpaceDeformerThreeBlendEntryBlock
+!hclBoneSpaceDeformer::ThreeBlendEntryBlock
 hclBoneSpaceDeformerTwoBlendEntryBlock
+!hclBoneSpaceDeformer::TwoBlendEntryBlock
 hclBoneSpaceMeshMeshDeformOperator
 hclBoneSpaceMeshMeshDeformPNOperator
 !hclBoneSpaceMeshMeshDeformPNOperator
@@ -21935,7 +22110,9 @@ hclBufferDefinition
 hclBufferLayout
 !hclBufferLayout
 hclBufferLayoutBufferElement
+!hclBufferLayout::BufferElement
 hclBufferLayoutSlot
+!hclBufferLayout::Slot
 hclBufferSetupObject
 hclBufferType
 HCL_BUFFER_TYPE_CLOTH_CURRENT_POSITIONS
@@ -21964,18 +22141,23 @@ hclClothSetupObject
 hclClothState
 !hclClothState
 hclClothStateBufferAccess
+!hclClothState::BufferAccess
 hclClothStateSetupObject
 !hclClothStateSetupObject
 hclClothStateTransformSetAccess
+!hclClothState::TransformSetAccess
 hclCollidable
 !hclCollidable
 hclCompressibleLinkConstraintSet
 !hclCompressibleLinkConstraintSet
 hclCompressibleLinkConstraintSetLink
+!hclCompressibleLinkConstraintSet::Link
 hclCompressibleLinkConstraintSetMx
 !hclCompressibleLinkConstraintSetMx
 hclCompressibleLinkConstraintSetMxBatch
+!hclCompressibleLinkConstraintSetMx::Batch
 hclCompressibleLinkConstraintSetMxSingle
+!hclCompressibleLinkConstraintSetMx::Single
 hclConstraintSet
 hclConstraintSetSetupObject
 hclConvexGeometryShape
@@ -21999,22 +22181,26 @@ hclGatherAllVerticesOperator
 hclGatherSomeVerticesOperator
 !hclGatherSomeVerticesOperator
 hclGatherSomeVerticesOperatorVertexPair
+!hclGatherSomeVerticesOperator::VertexPair
 hclInputConvertOperator
 !hclInputConvertOperator
 hclInstantiationUtil.cpp
 hclLocalRangeConstraintSet
 !hclLocalRangeConstraintSet
 hclLocalRangeConstraintSetLocalConstraint
+!hclLocalRangeConstraintSet::LocalConstraint
 hclLocalRangeSetupObject
 !hclLocalRangeSetupObject
 hclMeshBoneDeformOperator
 !hclMeshBoneDeformOperator
 hclMeshBoneDeformOperatorTriangleBonePair
+!hclMeshBoneDeformOperator::TriangleBonePair
 hclMeshBoneDeformSetupObject
 !hclMeshBoneDeformSetupObject
 hclMeshMeshDeformOperator
 !hclMeshMeshDeformOperator
 hclMeshMeshDeformOperatorTriangleVertexPair
+!hclMeshMeshDeformOperator::TriangleVertexPair
 hclMeshMeshDeformSetupObject
 !hclMeshMeshDeformSetupObject
 hclMoveFixedParticlesSetupObject
@@ -22022,6 +22208,7 @@ hclMoveFixedParticlesSetupObject
 hclMoveParticlesOperator
 !hclMoveParticlesOperator
 hclMoveParticlesOperatorVertexParticlePair
+!hclMoveParticlesOperator::VertexParticlePair
 hclNamedSetupMesh
 !hclNamedSetupMesh
 hclNamedTransformSetSetupObject
@@ -22029,21 +22216,37 @@ hclNamedTransformSetSetupObject
 hclObjectSpaceDeformer
 !hclObjectSpaceDeformer
 hclObjectSpaceDeformerEightBlendEntryBlock
+!hclObjectSpaceDeformer::EightBlendEntryBlock
 hclObjectSpaceDeformerFiveBlendEntryBlock
+!hclObjectSpaceDeformer::FiveBlendEntryBlock
 hclObjectSpaceDeformerFourBlendEntryBlock
+!hclObjectSpaceDeformer::FourBlendEntryBlock
 hclObjectSpaceDeformerLocalBlockP
+!hclObjectSpaceDeformer::LocalBlockP
 hclObjectSpaceDeformerLocalBlockPN
+!hclObjectSpaceDeformer::LocalBlockPN
 hclObjectSpaceDeformerLocalBlockPNT
+!hclObjectSpaceDeformer::LocalBlockPNT
 hclObjectSpaceDeformerLocalBlockPNTB
+!hclObjectSpaceDeformer::LocalBlockPNTB
 hclObjectSpaceDeformerLocalBlockUnpackedP
+!hclObjectSpaceDeformer::LocalBlockUnpackedP
 hclObjectSpaceDeformerLocalBlockUnpackedPN
+!hclObjectSpaceDeformer::LocalBlockUnpackedPN
 hclObjectSpaceDeformerLocalBlockUnpackedPNT
+!hclObjectSpaceDeformer::LocalBlockUnpackedPNT
 hclObjectSpaceDeformerLocalBlockUnpackedPNTB
+!hclObjectSpaceDeformer::LocalBlockUnpackedPNTB
 hclObjectSpaceDeformerOneBlendEntryBlock
+!hclObjectSpaceDeformer::OneBlendEntryBlock
 hclObjectSpaceDeformerSevenBlendEntryBlock
+!hclObjectSpaceDeformer::SevenBlendEntryBlock
 hclObjectSpaceDeformerSixBlendEntryBlock
+!hclObjectSpaceDeformer::SixBlendEntryBlock
 hclObjectSpaceDeformerThreeBlendEntryBlock
+!hclObjectSpaceDeformer::ThreeBlendEntryBlock
 hclObjectSpaceDeformerTwoBlendEntryBlock
+!hclObjectSpaceDeformer::TwoBlendEntryBlock
 hclObjectSpaceMeshMeshDeformOperator
 hclObjectSpaceMeshMeshDeformPNOperator
 !hclObjectSpaceMeshMeshDeformPNOperator
@@ -22091,7 +22294,9 @@ HCL_PLATFORM_XBOXONE
 hclRuntimeConversionInfo
 !hclRuntimeConversionInfo
 hclRuntimeConversionInfoElementConversion
+!hclRuntimeConversionInfo::ElementConversion
 hclRuntimeConversionInfoSlotConversion
+!hclRuntimeConversionInfo::SlotConversion
 hclSceneDataSetupMesh
 !hclSceneDataSetupMesh
 hclSceneDataSetupMeshSection
@@ -22104,6 +22309,7 @@ hclScratchBufferSetupObject
 hclSetupMesh
 hclSetupMeshSection
 hclSetupMeshSectionTriangle
+!hclSetupMeshSection::Triangle
 hclShadowBufferDefinition
 !hclShadowBufferDefinition
 hclShape
@@ -22125,20 +22331,29 @@ hclSimClothBufferSetupObject
 hclSimClothData
 !hclSimClothData
 hclSimClothDataCollidablePinchingData
+!hclSimClothData::CollidablePinchingData
 hclSimClothDataCollidableTransformMap
+!hclSimClothData::CollidableTransformMap
 hclSimClothDataLandscapeCollisionData
+!hclSimClothData::LandscapeCollisionData
 hclSimClothDataOverridableSimulationInfo
+!hclSimClothData::OverridableSimulationInfo
 hclSimClothDataParticleData
+!hclSimClothData::ParticleData
 hclSimClothDataTransferMotionData
+!hclSimClothData::TransferMotionData
 hclSimClothPose
 !hclSimClothPose
 hclSimClothSetupObject
 !hclSimClothSetupObject
 hclSimClothSetupObjectPerInstanceCollidable
+!hclSimClothSetupObject::PerInstanceCollidable
 hclSimClothSetupObjectTransferMotionSetupData
+!hclSimClothSetupObject::TransferMotionSetupData
 hclSimpleMeshBoneDeformOperator
 !hclSimpleMeshBoneDeformOperator
 hclSimpleMeshBoneDeformOperatorTriangleBonePair
+!hclSimpleMeshBoneDeformOperator::TriangleBonePair
 hclSimpleWindAction
 !hclSimpleWindAction
 hclSimulateOperator
@@ -22152,6 +22367,7 @@ hclSimulationSetupMeshMapOptions
 hclSkinOperator
 !hclSkinOperator
 hclSkinOperatorBoneInfluence
+!hclSkinOperator::BoneInfluence
 hclSkinSetupObject
 !hclSkinSetupObject
 hclSphereShape
@@ -22159,10 +22375,13 @@ hclSphereShape
 hclStandardLinkConstraintSet
 !hclStandardLinkConstraintSet
 hclStandardLinkConstraintSetLink
+!hclStandardLinkConstraintSet::Link
 hclStandardLinkConstraintSetMx
 !hclStandardLinkConstraintSetMx
 hclStandardLinkConstraintSetMxBatch
+!hclStandardLinkConstraintSetMx::Batch
 hclStandardLinkConstraintSetMxSingle
+!hclStandardLinkConstraintSetMx::Single
 hclStandardLinkSetupObject
 !hclStandardLinkSetupObject
 hclStaticDisplayBufferSetupObject
@@ -22172,24 +22391,43 @@ hclStaticShadowBufferDefinition
 hclStorageSetupMesh
 !hclStorageSetupMesh
 hclStorageSetupMeshBone
+!hclStorageSetupMesh::Bone
 hclStorageSetupMeshEdgeChannel
+!hclStorageSetupMesh::EdgeChannel
 hclStorageSetupMeshSection
 !hclStorageSetupMeshSection
 hclStorageSetupMeshSectionBoneInfluences
+!hclStorageSetupMeshSection::BoneInfluences
+hclStorageSetupMeshSection::BoneInfluences
 hclStorageSetupMeshSectionSectionEdgeSelectionChannel
+!hclStorageSetupMeshSection::SectionEdgeSelectionChannel
+hclStorageSetupMeshSection::SectionEdgeSelectionChannel
 hclStorageSetupMeshSectionSectionTriangleSelectionChannel
+!hclStorageSetupMeshSection::SectionTriangleSelectionChannel
+hclStorageSetupMeshSection::SectionTriangleSelectionChannel
 hclStorageSetupMeshSectionSectionVertexChannel
+!hclStorageSetupMeshSection::SectionVertexChannel
+hclStorageSetupMeshSection::SectionVertexChannel
 hclStorageSetupMeshSectionSectionVertexFloatChannel
+!hclStorageSetupMeshSection::SectionVertexFloatChannel
+hclStorageSetupMeshSection::SectionVertexFloatChannel
 hclStorageSetupMeshSectionSectionVertexSelectionChannel
+!hclStorageSetupMeshSection::SectionVertexSelectionChannel
+hclStorageSetupMeshSection::SectionVertexSelectionChannel
 hclStorageSetupMeshTriangleChannel
+!hclStorageSetupMesh::TriangleChannel
 hclStorageSetupMeshVertexChannel
+!hclStorageSetupMesh::VertexChannel
 hclStretchLinkConstraintSet
 !hclStretchLinkConstraintSet
 hclStretchLinkConstraintSetLink
+!hclStretchLinkConstraintSet::Link
 hclStretchLinkConstraintSetMx
 !hclStretchLinkConstraintSetMx
 hclStretchLinkConstraintSetMxBatch
+!hclStretchLinkConstraintSetMx::Batch
 hclStretchLinkConstraintSetMxSingle
+!hclStretchLinkConstraintSetMx::Single
 hclStretchLinkSetupObject
 !hclStretchLinkSetupObject
 hclTaperedCapsuleShape
@@ -22208,9 +22446,11 @@ HCL_TRANSFORMSET_TYPE_USER_1
 hclTransformSetUsage
 !hclTransformSetUsage
 hclTransformSetUsageTransformTracker
+!hclTransformSetUsage::TransformTracker
 hclTransitionConstraintSet
 !hclTransitionConstraintSet
 hclTransitionConstraintSetPerParticle
+!hclTransitionConstraintSet::PerParticle
 hclTransitionSetupObject
 !hclTransitionSetupObject
 HCL_TRIANGLE_CHANNEL_INVALID
@@ -22222,6 +22462,7 @@ hclUpdateAllVertexFramesOperator
 hclUpdateSomeVertexFramesOperator
 !hclUpdateSomeVertexFramesOperator
 hclUpdateSomeVertexFramesOperatorTriangle
+!hclUpdateSomeVertexFramesOperator::Triangle
 hclUpdateVertexFramesSetupObject
 !hclUpdateVertexFramesSetupObject
 HCL_VERTEX_CHANNEL_ANGLE
@@ -22240,13 +22481,19 @@ hclVertexSelectionInput
 hclVolumeConstraint
 !hclVolumeConstraint
 hclVolumeConstraintApplyData
+!hclVolumeConstraint::ApplyData
 hclVolumeConstraintFrameData
+!hclVolumeConstraint::FrameData
 hclVolumeConstraintMx
 !hclVolumeConstraintMx
 hclVolumeConstraintMxApplyBatchData
+!hclVolumeConstraintMx::ApplyBatchData
 hclVolumeConstraintMxApplySingleData
+!hclVolumeConstraintMx::ApplySingleData
 hclVolumeConstraintMxFrameBatchData
+!hclVolumeConstraintMx::FrameBatchData
 hclVolumeConstraintMxFrameSingleData
+!hclVolumeConstraintMx::FrameSingleData
 hclVolumeConstraintSetupObject
 !hclVolumeConstraintSetupObject
 hCQ
@@ -22383,6 +22630,7 @@ HeightAlong
 heightCenter
 Height   - Collision
 height_enable_hitting_wall
+Height : %f(%f, %f)
 heightfield
 HEIGHT_FIELD
 HEIGHTFIELD_COMPRESSED
@@ -22732,6 +22980,7 @@ hkaAnimationPreviewColorContainer
 hkaAnnotationTrack
 !hkaAnnotationTrack
 hkaAnnotationTrackAnnotation
+!hkaAnnotationTrack::Annotation
 hkaBone
 !hkaBone
 hkaBoneAttachment
@@ -22760,10 +23009,13 @@ hkaiAstarOutputParameters
 hkaiAvoidancePairProperties
 !hkaiAvoidancePairProperties
 hkaiAvoidancePairPropertiesPairData
+!hkaiAvoidancePairProperties::PairData
 hkaiAvoidanceProperties
 !hkaiAvoidanceProperties
 hkaiAvoidanceSolverBoundaryObstacle
+!hkaiAvoidanceSolver::BoundaryObstacle
 hkaiAvoidanceSolverSphereObstacle
+!hkaiAvoidanceSolver::SphereObstacle
 hkaiBehavior
 hkaiBehaviorBlockedDetector
 !hkaiBehaviorBlockedDetector
@@ -22788,10 +23040,13 @@ hkaiDefaultTask
 hkaiDirectedGraphExplicitCost
 !hkaiDirectedGraphExplicitCost
 hkaiDirectedGraphExplicitCostEdge
+!hkaiDirectedGraphExplicitCost::Edge
 hkaiDirectedGraphExplicitCostNode
+!hkaiDirectedGraphExplicitCost::Node
 hkaiDirectedGraphInstance
 !hkaiDirectedGraphInstance
 hkaiDirectedGraphInstanceFreeBlockList
+!hkaiDirectedGraphInstance::FreeBlockList
 hkaiDynamicNavMeshQueryMediator
 !hkaiDynamicNavMeshQueryMediator
 hkaiDynamicNavVolumeMediator
@@ -22799,43 +23054,60 @@ hkaiDynamicNavVolumeMediator
 hkaiEdgeFollowingBehavior
 !hkaiEdgeFollowingBehavior
 hkaiEdgeFollowingBehaviorCornerPredictorInitInfo
+!hkaiEdgeFollowingBehavior::CornerPredictorInitInfo
 hkaiEdgeFollowingBehavior.cpp
 hkaiEdgeFollowingBehavior is not for volumes
 hkaiEdgeGeometry
 !hkaiEdgeGeometry
 hkaiEdgeGeometryEdge
+!hkaiEdgeGeometry::Edge
 hkaiEdgeGeometryFace
+!hkaiEdgeGeometry::Face
 hkaiEdgePath
 !hkaiEdgePath
 hkaiEdgePathEdge
+!hkaiEdgePath::Edge
 hkaiEdgePathFollowingCornerInfo
+!hkaiEdgePath::FollowingCornerInfo
 hkaiEdgePathTraversalState
+!hkaiEdgePath::TraversalState
 hkaiFindPointInPolygon.cpp
 hkaiGateFollowingBehavior
 !hkaiGateFollowingBehavior
 hkaiGateFollowingBehavior.cpp
 hkaiGateFollowingBehavior is not for meshes
 hkaiGateFollowingBehaviorRequestedGoalPoint
+!hkaiGateFollowingBehavior::RequestedGoalPoint
 hkaiGatePath
 !hkaiGatePath
 hkaiGatePathPathGate
+!hkaiGatePath::PathGate
 hkaiGatePathSmoothOptions
+!hkaiGatePath::SmoothOptions
 hkaiGatePathTraversalState
+!hkaiGatePath::TraversalState
 hkaiGatePathUtilExponentialSchedule
+!hkaiGatePathUtil::ExponentialSchedule
 hkaiGatePathUtilGate
+!hkaiGatePathUtil::Gate
 hkaiGraphPathSearchParameters
 !hkaiGraphPathSearchParameters
 hkaiHierarchyUtils
 !hkaiHierarchyUtils
 hkaiHierarchyUtilsClusterSettings
+!hkaiHierarchyUtils::ClusterSettings
 hkaiInvertedAabbVolume
 !hkaiInvertedAabbVolume
 hkaiLineOfSightUtil
 !hkaiLineOfSightUtil
 hkaiLineOfSightUtilDirectPathInput
+!hkaiLineOfSightUtil::DirectPathInput
 hkaiLineOfSightUtilInputBase
+!hkaiLineOfSightUtil::InputBase
 hkaiLineOfSightUtilLineOfSightInput
+!hkaiLineOfSightUtil::LineOfSightInput
 hkaiLineOfSightUtilLineOfSightOutput
+!hkaiLineOfSightUtil::LineOfSightOutput
 hkaiLocalSteeringInput
 !hkaiLocalSteeringInput
 hkaiMaterialPainter
@@ -22844,30 +23116,43 @@ hkaiMovementProperties
 !hkaiMovementProperties
 hkaiNavMesh
 !hkaiNavMesh
+hkaiNavMeshBoundary::ShouldIncludeFaceHandler
 hkaiNavMeshClearanceCache
 !hkaiNavMeshClearanceCache
 hkaiNavMeshClearanceCacheManager
 !hkaiNavMeshClearanceCacheManager
 hkaiNavMeshClearanceCacheManagerCacheInfo
+!hkaiNavMeshClearanceCacheManager::CacheInfo
 hkaiNavMeshClearanceCacheManager.cpp
 hkaiNavMeshClearanceCacheManagerRegistration
+!hkaiNavMeshClearanceCacheManager::Registration
 hkaiNavMeshClearanceCacheMcpDataInteger
+!hkaiNavMeshClearanceCache::McpDataInteger
 hkaiNavMeshCutter
 !hkaiNavMeshCutter
 hkaiNavMeshCutter.cpp
 hkaiNavMeshCutterMeshInfo
+!hkaiNavMeshCutter::MeshInfo
 hkaiNavMeshCutterSavedConnectivity
+!hkaiNavMeshCutter::SavedConnectivity
 hkaiNavMeshEdge
+!hkaiNavMesh::Edge
 hkaiNavMeshEdgeMatchingParameters
 !hkaiNavMeshEdgeMatchingParameters
 hkaiNavMeshFace
+!hkaiNavMesh::Face
 hkaiNavMeshGenerationSettings
 !hkaiNavMeshGenerationSettings
 hkaiNavMeshGenerationSettingsMaterialConstructionPair
+!hkaiNavMeshGenerationSettings::MaterialConstructionPair
 hkaiNavMeshGenerationSettingsOverrideSettings
+!hkaiNavMeshGenerationSettings::OverrideSettings
 hkaiNavMeshGenerationSettingsRegionPruningSettings
+!hkaiNavMeshGenerationSettings::RegionPruningSettings
 hkaiNavMeshGenerationSettingsRegionPruningSettingsRegionConnection
+!hkaiNavMeshGenerationSettings::RegionPruningSettings::RegionConnection
 hkaiNavMeshGenerationSettingsWallClimbingSettings
+!hkaiNavMeshGenerationSettings::WallClimbingSettings
 hkaiNavMeshGenerationSnapshot
 !hkaiNavMeshGenerationSnapshot
 hkaiNavMeshInstance
@@ -22880,21 +23165,29 @@ hkaiNavMeshQueryMediator
 hkaiNavMeshSimplificationSnapshot
 !hkaiNavMeshSimplificationSnapshot
 hkaiNavMeshSimplificationUtilsExtraVertexSettings
+!hkaiNavMeshSimplificationUtils::ExtraVertexSettings
 hkaiNavMeshSimplificationUtilsSettings
+!hkaiNavMeshSimplificationUtils::Settings
 hkaiNavVolume
 !hkaiNavVolume
 hkaiNavVolumeCell
+!hkaiNavVolume::Cell
 hkaiNavVolumeEdge
+!hkaiNavVolume::Edge
 hkaiNavVolumeGenerationSettings
 !hkaiNavVolumeGenerationSettings
 hkaiNavVolumeGenerationSettingsChunkSettings
+!hkaiNavVolumeGenerationSettings::ChunkSettings
 hkaiNavVolumeGenerationSettingsMaterialConstructionInfo
+!hkaiNavVolumeGenerationSettings::MaterialConstructionInfo
 hkaiNavVolumeGenerationSettingsMergingSettings
+!hkaiNavVolumeGenerationSettings::MergingSettings
 hkaiNavVolumeGenerationSnapshot
 !hkaiNavVolumeGenerationSnapshot
 hkaiNavVolumeInstance
 !hkaiNavVolumeInstance
 hkaiNavVolumeInstanceCellInstance
+!hkaiNavVolumeInstance::CellInstance
 hkaiNavVolumeMediator
 hkaiNavVolumePathRequestInfo
 !hkaiNavVolumePathRequestInfo
@@ -22910,21 +23203,30 @@ hkaiOverlapManager
 hkaiOverlapManagerSection
 !hkaiOverlapManagerSection
 hkaiOverlapManagerSectionGeneratorData
+!hkaiOverlapManagerSection::GeneratorData
+hkaiOverlapManagerSection::GeneratorData
 hkaiOverlappingTriangles
 !hkaiOverlappingTriangles
 hkaiOverlappingTrianglesSettings
+!hkaiOverlappingTriangles::Settings
 hkaiPath
 !hkaiPath
 hkaiPathfindingUtil
 !hkaiPathfindingUtil
 hkaiPathfindingUtilFindGraphPathInput
+!hkaiPathfindingUtil::FindGraphPathInput
 hkaiPathfindingUtilFindPathInput
+!hkaiPathfindingUtil::FindPathInput
+hkaiPathfindingUtil::FindPathInput
 hkaiPathfindingUtilFindPathOutput
+!hkaiPathfindingUtil::FindPathOutput
+hkaiPathfindingUtil::FindPathOutput
 hkaiPathFollowingBehavior
 !hkaiPathFollowingBehavior
 hkaiPathFollowingProperties
 !hkaiPathFollowingProperties
 hkaiPathPathPoint
+!hkaiPath::PathPoint
 hkaiPersistentEdgeKey
 !hkaiPersistentEdgeKey
 hkaiPersistentFaceKey
@@ -22947,7 +23249,9 @@ hkaiReferenceFrameAndExtrusion
 hkaiSearchParameters
 !hkaiSearchParameters
 hkaiSearchParametersBufferSizes
+!hkaiSearchParameters::BufferSizes
 hkaiSearchParametersSearchBuffers
+!hkaiSearchParameters::SearchBuffers
 hkaiSilhouetteGenerationParameters
 !hkaiSilhouetteGenerationParameters
 hkaiSilhouetteGenerator
@@ -22964,11 +23268,13 @@ hkaiSimpleSilhouetteMerger
 !hkaiSimpleSilhouetteMerger
 hkaiSingleCharacterBehavior
 hkaiSingleCharacterBehaviorRequestedGoalPoint
+!hkaiSingleCharacterBehavior::RequestedGoalPoint
 hkaiSplitGenerationSnapshot
 !hkaiSplitGenerationSnapshot
 hkaiSplitGenerationUtils
 !hkaiSplitGenerationUtils
 hkaiSplitGenerationUtilsSettings
+!hkaiSplitGenerationUtils::Settings
 hkaiStaticTreeNavMeshQueryMediator
 !hkaiStaticTreeNavMeshQueryMediator
 hkaiStreamingCollection
@@ -22978,8 +23284,11 @@ hkaiStreamingCollectionInstanceInfo
 hkaiStreamingSet
 !hkaiStreamingSet
 hkaiStreamingSetGraphConnection
+!hkaiStreamingSet::GraphConnection
 hkaiStreamingSetNavMeshConnection
+!hkaiStreamingSet::NavMeshConnection
 hkaiStreamingSetVolumeConnection
+!hkaiStreamingSet::VolumeConnection
 hkaiUserEdgePairArray
 !hkaiUserEdgePairArray
 hkaiUserEdgeSetupArray
@@ -22987,33 +23296,46 @@ hkaiUserEdgeSetupArray
 hkaiUserEdgeUtils
 !hkaiUserEdgeUtils
 hkaiUserEdgeUtilsObb
+!hkaiUserEdgeUtils::Obb
 hkaiUserEdgeUtilsUserEdgePair
+!hkaiUserEdgeUtils::UserEdgePair
 hkaiUserEdgeUtilsUserEdgeSetup
+!hkaiUserEdgeUtils::UserEdgeSetup
 hkaiVolume
 hkaiVolumePathfindingUtil
 !hkaiVolumePathfindingUtil
 hkaiVolumePathfindingUtilFindPathInput
+!hkaiVolumePathfindingUtil::FindPathInput
+hkaiVolumePathfindingUtil::FindPathInput
 hkaiVolumePathfindingUtilFindPathOutput
+!hkaiVolumePathfindingUtil::FindPathOutput
+hkaiVolumePathfindingUtil::FindPathOutput
 hkaiWorld
 !hkaiWorld
 hkaiWorldCharacterStepSerializableContext
+!hkaiWorld::CharacterStepSerializableContext
+hkaiWorld::CharacterStepSerializableContext
 hkaKeyFrameHierarchyUtility
 !hkaKeyFrameHierarchyUtility
 hkaKeyFrameHierarchyUtilityControlData
+!hkaKeyFrameHierarchyUtility::ControlData
 hkAlignSceneToNodeOptions
 !hkAlignSceneToNodeOptions
 hkaMeshBinding
 !hkaMeshBinding
 hkaMeshBindingMapping
+!hkaMeshBinding::Mapping
 hkaParameterizedAnimationReferenceFrame
 !hkaParameterizedAnimationReferenceFrame
 hkaParameterizedReferenceFrame
 hkaPredictiveCompressedAnimation
 !hkaPredictiveCompressedAnimation
 hkaPredictiveCompressedAnimationTrackCompressionParams
+!hkaPredictiveCompressedAnimation::TrackCompressionParams
 hkaQuantizedAnimation
 !hkaQuantizedAnimation
 hkaQuantizedAnimationTrackCompressionParams
+!hkaQuantizedAnimation::TrackCompressionParams
 hkaRagdollInstance
 !hkaRagdollInstance
 hkaReferenceFrameTypeEnum
@@ -23026,18 +23348,25 @@ hkArrayTypeAttribute
 hkaSkeleton
 !hkaSkeleton
 hkaSkeletonLocalFrameOnBone
+!hkaSkeleton::LocalFrameOnBone
 hkaSkeletonMapper
 !hkaSkeletonMapper
 hkaSkeletonMapperData
 !hkaSkeletonMapperData
 hkaSkeletonMapperDataChainMapping
+!hkaSkeletonMapperData::ChainMapping
 hkaSkeletonMapperDataPartitionMappingRange
+!hkaSkeletonMapperData::PartitionMappingRange
 hkaSkeletonMapperDataSimpleMapping
+!hkaSkeletonMapperData::SimpleMapping
 hkaSkeletonPartition
+!hkaSkeleton::Partition
 hkaSplineCompressedAnimation
 !hkaSplineCompressedAnimation
 hkaSplineCompressedAnimationAnimationCompressionParams
+!hkaSplineCompressedAnimation::AnimationCompressionParams
 hkaSplineCompressedAnimationTrackCompressionParams
+!hkaSplineCompressedAnimation::TrackCompressionParams
 hkAttributeHideCriteria
 !hkAttributeHideCriteria
 hKB
@@ -23063,14 +23392,23 @@ hkcdAdf
 hkcdDynamicAabbTree
 !hkcdDynamicAabbTree
 hkcdDynamicTreeAnisotropicMetric
+!hkcdDynamicTree::AnisotropicMetric
 hkcdDynamicTreeBalanceMetric
+!hkcdDynamicTree::BalanceMetric
 hkcdDynamicTreeCentroidMetric
+!hkcdDynamicTree::CentroidMetric
 hkcdDynamicTreeCodec18
+!hkcdDynamicTree::Codec18
 hkcdDynamicTreeCodec32
+!hkcdDynamicTree::Codec32
 hkcdDynamicTreeCodecInt16
+!hkcdDynamicTree::CodecInt16
 hkcdDynamicTreeCodecInt16IntAabb
+!hkcdDynamicTree::CodecInt16::IntAabb
 hkcdDynamicTreeCodecRawUint
+!hkcdDynamicTree::CodecRawUint
 hkcdDynamicTreeCodecRawUlong
+!hkcdDynamicTree::CodecRawUlong
 hkcdDynamicTreeCodecRawunsignedint
 !hkcdDynamicTreeCodecRawunsignedint_typename
 hkcdDynamicTreeCodecRawunsignedlong
@@ -23084,9 +23422,13 @@ hkcdDynamicTreeDefaultDynamicStoragehkcdDynamicTreeCodecRawUint
 hkcdDynamicTreeDefaultDynamicStoragehkcdDynamicTreeCodecRawUlong
 !hkcdDynamicTreeDefaultDynamicStoragehkcdDynamicTreeCodecRawUlong_typename
 hkcdDynamicTreeDefaultTree32Storage
+!hkcdDynamicTree::DefaultTree32Storage
 hkcdDynamicTreeDefaultTree48Storage
+!hkcdDynamicTree::DefaultTree48Storage
 hkcdDynamicTreeDefaultTreeInt16Storage
+!hkcdDynamicTree::DefaultTreeInt16Storage
 hkcdDynamicTreeDefaultTreePtrStorage
+!hkcdDynamicTree::DefaultTreePtrStorage
 hkcdDynamicTreeDynamicStorage0hkcdDynamicTreeAnisotropicMetrichkcdDynamicTreeCodec32
 !hkcdDynamicTreeDynamicStorage0hkcdDynamicTreeAnisotropicMetrichkcdDynamicTreeCodec32_typename
 hkcdDynamicTreeDynamicStorage0hkcdDynamicTreeAnisotropicMetrichkcdDynamicTreeCodecInt16
@@ -23096,9 +23438,13 @@ hkcdDynamicTreeDynamicStorage0hkcdDynamicTreeAnisotropicMetrichkcdDynamicTreeCod
 hkcdDynamicTreeDynamicStorage0hkcdDynamicTreeAnisotropicMetrichkcdDynamicTreeCodecRawUlong
 !hkcdDynamicTreeDynamicStorage0hkcdDynamicTreeAnisotropicMetrichkcdDynamicTreeCodecRawUlong_typename
 hkcdDynamicTreeDynamicStorage16
+!hkcdDynamicTree::DynamicStorage16
 hkcdDynamicTreeDynamicStorage32
+!hkcdDynamicTree::DynamicStorage32
 hkcdDynamicTreeDynamicStorageInt16
+!hkcdDynamicTree::DynamicStorageInt16
 hkcdDynamicTreeDynamicStoragePtr
+!hkcdDynamicTree::DynamicStoragePtr
 hkcdDynamicTreeTreehkcdDynamicTreeDynamicStorage16
 !hkcdDynamicTreeTreehkcdDynamicTreeDynamicStorage16_typename
 hkcdDynamicTreeTreehkcdDynamicTreeDynamicStorage32
@@ -23110,6 +23456,8 @@ hkcdDynamicTreeTreehkcdDynamicTreeDynamicStoragePtr
 hkcdFourAabb
 !hkcdFourAabb
 hkcdFractureEngine
+hkcdGskBase::ShapeInterface
+hkcdGsk::Cache
 hkcdPlanarCsgOperand
 !hkcdPlanarCsgOperand
 hkcdPlanarEntity
@@ -23123,10 +23471,14 @@ hkcdPlanarGeometryPolygonCollection
 hkcdPlanarGeometryPrimitivesCollection28
 !hkcdPlanarGeometryPrimitivesCollection28_typename
 hkcdPlanarGeometryPrimitivesPlane
+!hkcdPlanarGeometryPrimitives::Plane
 hkcdPlanarSolid
 !hkcdPlanarSolid
 hkcdPlanarSolidNode
+!hkcdPlanarSolid::Node
 hkcdPlanarSolidNodeStorage
+!hkcdPlanarSolid::NodeStorage
+hkcdPlanarSolid::NodeStorage
 hkcdShape
 !hkcdShape
 hkcdShapeDispatchType
@@ -23135,26 +23487,73 @@ hkcdShapeInfoCodecType
 !hkcdShapeInfoCodecType
 hkcdShapeType
 !hkcdShapeType
+hkcdShapeType::ALL_SHAPE_TYPES
+hkcdShapeType::BOX
+hkcdShapeType::BV
+hkcdShapeType::BV_COMPRESSED_MESH
+hkcdShapeType::BV_TREE
+hkcdShapeType::CAPSULE
+hkcdShapeType::COLLECTION
+hkcdShapeType::COMPRESSED_MESH
+hkcdShapeType::CONVEX
+hkcdShapeType::CONVEX_LIST
+hkcdShapeType::CONVEX_PIECE
+hkcdShapeType::CONVEX_TRANSFORM
+hkcdShapeType::CONVEX_TRANSLATE
+hkcdShapeType::CONVEX_VERTICES
+hkcdShapeType::CYLINDER
+hkcdShapeType::EXTENDED_MESH
+hkcdShapeType::HEIGHT_FIELD
+hkcdShapeType::INVALID
+hkcdShapeType::LIST
+hkcdShapeType::MAX_PPU_SHAPE_TYPE
+hkcdShapeType::MOPP
+hkcdShapeType::MULTI_RAY
+hkcdShapeType::MULTI_SPHERE
+hkcdShapeType::PHANTOM_CALLBACK
+hkcdShapeType::PLANE
+hkcdShapeType::SAMPLED_HEIGHT_FIELD
+hkcdShapeType::SPHERE
+hkcdShapeType::SPHERE_REP
+hkcdShapeType::STATIC_COMPOUND
+hkcdShapeType::TRANSFORM
+hkcdShapeType::TRIANGLE
+hkcdShapeType::TRIANGLE_COLLECTION
+hkcdShapeType::TRI_SAMPLED_HEIGHT_FIELD_BV_TREE
+hkcdShapeType::TRI_SAMPLED_HEIGHT_FIELD_COLLECTION
+hkcdShapeType::USER0
+hkcdShapeType::USER1
+hkcdShapeType::USER2
 hkcdSimdTree
 !hkcdSimdTree
 hkcdSimdTreeNode
+!hkcdSimdTree::Node
 hkcdStaticAabbTree
 !hkcdStaticAabbTree
 hkcdStaticMeshTreeBase
 !hkcdStaticMeshTreeBase
 hkcdStaticMeshTreeBaseConnectivity
+!hkcdStaticMeshTreeBase::Connectivity
 hkcdStaticMeshTreeBaseConnectivitySectionHeader
+!hkcdStaticMeshTreeBase::Connectivity::SectionHeader
 hkcdStaticMeshTreeBaseEdge
+!hkcdStaticMeshTreeBase::Edge
 hkcdStaticMeshTreeBaseLinks
+!hkcdStaticMeshTreeBase::Links
 hkcdStaticMeshTreeBasePrimitive
+!hkcdStaticMeshTreeBase::Primitive
 hkcdStaticMeshTreeBasePrimitiveDataRunBaseunsignedint
 !hkcdStaticMeshTreeBasePrimitiveDataRunBaseunsignedint_typename
 hkcdStaticMeshTreeBasePrimitiveDataRunBaseunsignedshort
 !hkcdStaticMeshTreeBasePrimitiveDataRunBaseunsignedshort_typename
 hkcdStaticMeshTreeBaseSection
+!hkcdStaticMeshTreeBase::Section
 hkcdStaticMeshTreeBaseSectionDataRuns
+!hkcdStaticMeshTreeBase::Section::DataRuns
 hkcdStaticMeshTreeBaseSectionPrimitives
+!hkcdStaticMeshTreeBase::Section::Primitives
 hkcdStaticMeshTreeBaseSectionSharedVertices
+!hkcdStaticMeshTreeBase::Section::SharedVertices
 hkcdStaticMeshTreeDefaultDataRun
 !hkcdStaticMeshTreeDefaultDataRun
 hkcdStaticMeshTreehkcdStaticMeshTreeCommonConfigunsignedintunsignedlonglong1121hkpBvCompressedMeshShapeTreeDataRun
@@ -23163,19 +23562,33 @@ hkcdStaticMeshTree.inl
 hkcdStaticPvs
 !hkcdStaticPvs
 hkcdStaticPvsBlockHeader
+!hkcdStaticPvs::BlockHeader
 hkcdStaticTreeCodec3Axis
+!hkcdStaticTree::Codec3Axis
 hkcdStaticTreeCodec3Axis4
+!hkcdStaticTree::Codec3Axis4
 hkcdStaticTreeCodec3Axis5
+!hkcdStaticTree::Codec3Axis5
 hkcdStaticTreeCodec3Axis6
+!hkcdStaticTree::Codec3Axis6
 hkcdStaticTreeCodecRaw
+!hkcdStaticTree::CodecRaw
 hkcdStaticTreeDefaultTreeStorage32
+!hkcdStaticTree::DefaultTreeStorage32
 hkcdStaticTreeDefaultTreeStorage4
+!hkcdStaticTree::DefaultTreeStorage4
 hkcdStaticTreeDefaultTreeStorage5
+!hkcdStaticTree::DefaultTreeStorage5
 hkcdStaticTreeDefaultTreeStorage6
+!hkcdStaticTree::DefaultTreeStorage6
 hkcdStaticTreeDynamicStorage32
+!hkcdStaticTree::DynamicStorage32
 hkcdStaticTreeDynamicStorage4
+!hkcdStaticTree::DynamicStorage4
 hkcdStaticTreeDynamicStorage5
+!hkcdStaticTree::DynamicStorage5
 hkcdStaticTreeDynamicStorage6
+!hkcdStaticTree::DynamicStorage6
 hkcdStaticTreeDynamicStoragehkcdStaticTreeCodec3Axis4
 !hkcdStaticTreeDynamicStoragehkcdStaticTreeCodec3Axis4_typename
 hkcdStaticTreeDynamicStoragehkcdStaticTreeCodec3Axis5
@@ -23199,6 +23612,7 @@ hkClass
 hkClassEnum
 !hkClassEnum
 hkClassEnumItem
+!hkClassEnum::Item
 hkClassMember
 !hkClassMember
 hkColor
@@ -23214,6 +23628,7 @@ hkCriticalSection
 hkCustomAttributes
 !hkCustomAttributes
 hkCustomAttributesAttribute
+!hkCustomAttributes::Attribute
 hkDataClassNative
 hkDataObjectImpl
 hkDataObjectNative
@@ -23265,9 +23680,13 @@ hkFunctionPointer
 hkGeometry
 !hkGeometry
 hkGeometryTriangle
+!hkGeometry::Triangle
 hkGizmoAttribute
 !hkGizmoAttribute
+) hkgpConvexHull::buildIndices need to be called before this operation.
+) hkgpConvexHull::buildMassProperties need to be called before this operation.
 hkgpConvexHull.cpp
+hkgpConvexHull::ensureContainment requires at least 4 planes to work, make sure to call buildIndices.
 hkgpConvexHullInternals.h
 hkgpJobQueue.cpp
 hkgpJobsQueue
@@ -23298,6 +23717,7 @@ hkMassProperties
 hkMatrix3
 hkMatrix4
 hkMemoryAllocator
+hkMemoryAllocator::ExtendedInterface
 hkMemoryMeshBody
 !hkMemoryMeshBody
 hkMemoryMeshMaterial
@@ -23305,6 +23725,7 @@ hkMemoryMeshMaterial
 hkMemoryMeshShape
 !hkMemoryMeshShape
 hkMemoryMeshShapeSection
+!hkMemoryMeshShape::Section
 hkMemoryMeshTexture
 !hkMemoryMeshTexture
 hkMemoryMeshVertexBuffer
@@ -23314,6 +23735,7 @@ hkMemoryResourceContainer
 hkMemoryResourceHandle
 !hkMemoryResourceHandle
 hkMemoryResourceHandleExternalLink
+!hkMemoryResourceHandle::ExternalLink
 hkMemorySystem
 hkMeshBody
 hkMeshBoneIndexMapping
@@ -23327,6 +23749,7 @@ hkMeshShape
 hkMeshSystem
 hkMeshTexture
 hkMeshTextureRawBufferDescriptor
+!hkMeshTexture::RawBufferDescriptor
 hkMeshVertexBuffer
 HK_MIRRORED_ANIMATION
 hk.ModelerNodeType
@@ -23335,19 +23758,24 @@ hkModelerNodeTypeAttribute
 hkMonitorStreamColorTable
 !hkMonitorStreamColorTable
 hkMonitorStreamColorTableColorPair
+!hkMonitorStreamColorTable::ColorPair
 hkMonitorStreamFrameInfo
 !hkMonitorStreamFrameInfo
 hkMonitorStreamStringMap
 !hkMonitorStreamStringMap
 hkMonitorStreamStringMapStringMap
+!hkMonitorStreamStringMap::StringMap
 hkMoppBvTreeShapeBase
 hkMotionState
 !hkMotionState
 hkMultipleVertexBuffer
 !hkMultipleVertexBuffer
 hkMultipleVertexBufferElementInfo
+!hkMultipleVertexBuffer::ElementInfo
 hkMultipleVertexBufferLockedElement
+!hkMultipleVertexBuffer::LockedElement
 hkMultipleVertexBufferVertexBufferInfo
+!hkMultipleVertexBuffer::VertexBufferInfo
 hkMultiThreadCheck
 !hkMultiThreadCheck
 hkNativeResource
@@ -23367,6 +23795,7 @@ hkp3dAngConstraintAtom
 hkp6DofConstraintData
 !hkp6DofConstraintData
 hkp6DofConstraintDataBlueprints
+!hkp6DofConstraintData::Blueprints
 hkpAabbCastCollector
 hkpAabbPhantom
 !hkpAabbPhantom
@@ -23399,11 +23828,13 @@ hkpArrayAction
 hkpBallAndSocketConstraintData
 !hkpBallAndSocketConstraintData
 hkpBallAndSocketConstraintDataAtoms
+!hkpBallAndSocketConstraintData::Atoms
 hkpBallGun
 !hkpBallGun
 hkpBallSocketChainData
 !hkpBallSocketChainData
 hkpBallSocketChainDataConstraintInfo
+!hkpBallSocketChainData::ConstraintInfo
 hkpBallSocketConstraintAtom
 !hkpBallSocketConstraintAtom
 hkpBinaryAction
@@ -23413,12 +23844,17 @@ hkpBoxShape
 !hkpBoxShape
 hkpBreakableBody
 hkpBreakableBodyController
+!hkpBreakableBody::Controller
+hkpBreakableBody::Controller
 hkpBreakableConstraintData
 !hkpBreakableConstraintData
 hkpBreakableMaterial
 hkpBreakableMultiMaterial
 hkpBreakableMultiMaterialInverseMapping
+!hkpBreakableMultiMaterial::InverseMapping
+hkpBreakableMultiMaterial::InverseMapping
 hkpBreakableMultiMaterialInverseMappingDescriptor
+!hkpBreakableMultiMaterial::InverseMappingDescriptor
 hkpBreakableShape
 !hkpBreakableShape
 hkpBridgeAtoms
@@ -23466,9 +23902,11 @@ hkpCogWheelConstraintAtom
 hkpCogWheelConstraintData
 !hkpCogWheelConstraintData
 hkpCogWheelConstraintDataAtoms
+!hkpCogWheelConstraintData::Atoms
 hkpCollidable
 !hkpCollidable
 hkpCollidableBoundingVolumeData
+!hkpCollidable::BoundingVolumeData
 hkpCollidableCollidableFilter
 hkpCollisionAgent
 hkpCollisionDispatcher
@@ -23478,8 +23916,11 @@ hkpCollisionFilterList
 hkpCompressedMeshShape
 !hkpCompressedMeshShape
 hkpCompressedMeshShapeBigTriangle
+!hkpCompressedMeshShape::BigTriangle
 hkpCompressedMeshShapeChunk
+!hkpCompressedMeshShape::Chunk
 hkpCompressedMeshShapeConvexPiece
+!hkpCompressedMeshShape::ConvexPiece
 hkpCompressedSampledHeightFieldShape
 !hkpCompressedSampledHeightFieldShape
 hkpConeLimitConstraintAtom
@@ -23499,6 +23940,7 @@ hkpConstraintData
 hkpConstraintInstance
 !hkpConstraintInstance
 hkpConstraintInstanceSmallArraySerializeOverrideType
+!hkpConstraintInstance::SmallArraySerializeOverrideType
 hkpConstraintListener
 hkpConstraintMotor
 hkpContactListener
@@ -23538,6 +23980,7 @@ hkpDeformableAngConstraintAtom
 hkpDeformableFixedConstraintData
 !hkpDeformableFixedConstraintData
 hkpDeformableFixedConstraintDataAtoms
+!hkpDeformableFixedConstraintData::Atoms
 hkpDeformableLinConstraintAtom
 !hkpDeformableLinConstraintAtom
 hkpDisableEntityCollisionFilter
@@ -23545,23 +23988,33 @@ hkpDisableEntityCollisionFilter
 hkpDisplayBindingData
 !hkpDisplayBindingData
 hkpDisplayBindingDataPhysicsSystem
+!hkpDisplayBindingData::PhysicsSystem
+hkpDisplayBindingData::PhysicsSystem
 hkpDisplayBindingDataRigidBody
+!hkpDisplayBindingData::RigidBody
+hkpDisplayBindingData::RigidBody
 hkpEllipticalLimitConstraintAtom
 !hkpEllipticalLimitConstraintAtom
 hkpEntity
 !hkpEntity
 hkpEntityActivation
 hkpEntityExtendedListeners
+!hkpEntity::ExtendedListeners
 hkpEntityListener
 hkpEntitySmallArraySerializeOverrideType
+!hkpEntity::SmallArraySerializeOverrideType
 hkpEntitySpuCollisionCallback
+!hkpEntity::SpuCollisionCallback
 hkpExtendedMeshShape
 !hkpExtendedMeshShape
 hkpExtendedMeshShapeBreakableMaterial
 !hkpExtendedMeshShapeBreakableMaterial
 hkpExtendedMeshShapeShapesSubpart
+!hkpExtendedMeshShape::ShapesSubpart
 hkpExtendedMeshShapeSubpart
+!hkpExtendedMeshShape::Subpart
 hkpExtendedMeshShapeTrianglesSubpart
+!hkpExtendedMeshShape::TrianglesSubpart
 hkpFastMeshShape
 !hkpFastMeshShape
 hkpFilterType
@@ -23572,6 +24025,7 @@ hkpFixedBufferRayHitCollector
 hkpFixedConstraintData
 !hkpFixedConstraintData
 hkpFixedConstraintDataAtoms
+!hkpFixedConstraintData::Atoms
 hkpFixedRigidMotion
 !hkpFixedRigidMotion
 hkpGenericConstraintData
@@ -23579,6 +24033,7 @@ hkpGenericConstraintData
 hkpGenericConstraintDataScheme
 !hkpGenericConstraintDataScheme
 hkpGenericConstraintDataSchemeConstraintInfo
+!hkpGenericConstraintDataScheme::ConstraintInfo
 hkpGravityGun
 !hkpGravityGun
 hkpGroupCollisionFilter
@@ -23590,9 +24045,11 @@ hkpHeightFieldShape
 hkpHingeConstraintData
 !hkpHingeConstraintData
 hkpHingeConstraintDataAtoms
+!hkpHingeConstraintData::Atoms
 hkpHingeLimitsData
 !hkpHingeLimitsData
 hkpHingeLimitsDataAtoms
+!hkpHingeLimitsData::Atoms
 hkpIgnoreModifierConstraintAtom
 !hkpIgnoreModifierConstraintAtom
 hkpIterativeLinearCastAgent
@@ -23602,11 +24059,13 @@ hkpLimitedForceConstraintMotor
 hkpLimitedHingeConstraintData
 !hkpLimitedHingeConstraintData
 hkpLimitedHingeConstraintDataAtoms
+!hkpLimitedHingeConstraintData::Atoms
 hkpLinConstraintAtom
 !hkpLinConstraintAtom
 hkpLinearClearanceConstraintData
 !hkpLinearClearanceConstraintData
 hkpLinearClearanceConstraintDataAtoms
+!hkpLinearClearanceConstraintData::Atoms
 hkpLinearParametricCurve
 !hkpLinearParametricCurve
 hkpLinFrictionConstraintAtom
@@ -23624,6 +24083,7 @@ hkpListShape
 hkpListShapeBreakableMaterial
 !hkpListShapeBreakableMaterial
 hkpListShapeChildInfo
+!hkpListShape::ChildInfo
 hkpMalleableConstraintData
 !hkpMalleableConstraintData
 hkpMassChangerModifierConstraintAtom
@@ -23637,6 +24097,7 @@ hkpMeshMaterial
 hkpMeshShape
 !hkpMeshShape
 hkpMeshShapeSubpart
+!hkpMeshShape::Subpart
 hkpModifierConstraintAtom
 !hkpModifierConstraintAtom
 hkpMoppBvTreeShape
@@ -23644,6 +24105,7 @@ hkpMoppBvTreeShape
 hkpMoppCode
 !hkpMoppCode
 hkpMoppCodeCodeInfo
+!hkpMoppCode::CodeInfo
 hkpMoppCodeReindexedTerminal
 !hkpMoppCodeReindexedTerminal
 hkpMoppModifier
@@ -23659,6 +24121,7 @@ hkpMovingSurfaceModifierConstraintAtom
 hkpMultiRayShape
 !hkpMultiRayShape
 hkpMultiRayShapeRay
+!hkpMultiRayShape::Ray
 hkpMultiSphereShape
 !hkpMultiSphereShape
 hkpMultiThreadedSimulation
@@ -23678,6 +24141,7 @@ hkpOverwritePivotConstraintAtom
 hkpPairCollisionFilter
 !hkpPairCollisionFilter
 hkpPairCollisionFilterMapPairFilterKeyOverrideType
+!hkpPairCollisionFilter::MapPairFilterKeyOverrideType
 hkpParametricCurve
 hkpPhantom
 hkpPhantomCallbackShape
@@ -23698,18 +24162,23 @@ hkpPointToPathConstraintData
 hkpPointToPlaneConstraintData
 !hkpPointToPlaneConstraintData
 hkpPointToPlaneConstraintDataAtoms
+!hkpPointToPlaneConstraintData::Atoms
 hkpPositionConstraintMotor
 !hkpPositionConstraintMotor
 hkpPoweredChainData
 !hkpPoweredChainData
 hkpPoweredChainDataConstraintInfo
+!hkpPoweredChainData::ConstraintInfo
 hkpPoweredChainMapper
 !hkpPoweredChainMapper
 hkpPoweredChainMapperLinkInfo
+!hkpPoweredChainMapper::LinkInfo
 hkpPoweredChainMapperTarget
+!hkpPoweredChainMapper::Target
 hkpPrismaticConstraintData
 !hkpPrismaticConstraintData
 hkpPrismaticConstraintDataAtoms
+!hkpPrismaticConstraintData::Atoms
 hkpProjectileGun
 !hkpProjectileGun
 hkpPulleyConstraintAtom
@@ -23717,17 +24186,21 @@ hkpPulleyConstraintAtom
 hkpPulleyConstraintData
 !hkpPulleyConstraintData
 hkpPulleyConstraintDataAtoms
+!hkpPulleyConstraintData::Atoms
 hkpRackAndPinionConstraintAtom
 !hkpRackAndPinionConstraintAtom
 hkpRackAndPinionConstraintData
 !hkpRackAndPinionConstraintData
 hkpRackAndPinionConstraintDataAtoms
+!hkpRackAndPinionConstraintData::Atoms
 hkpRagdollConstraintData
 !hkpRagdollConstraintData
 hkpRagdollConstraintDataAtoms
+!hkpRagdollConstraintData::Atoms
 hkpRagdollLimitsData
 !hkpRagdollLimitsData
 hkpRagdollLimitsDataAtoms
+!hkpRagdollLimitsData::Atoms
 hkpRagdollMotorConstraintAtom
 !hkpRagdollMotorConstraintAtom
 hkpRayCollidableFilter
@@ -23747,11 +24220,13 @@ hkProcessFactory
 hkpRotationalConstraintData
 !hkpRotationalConstraintData
 hkpRotationalConstraintDataAtoms
+!hkpRotationalConstraintData::Atoms
 hkpSampledHeightField_AllCasts
 hkpSampledHeightFieldShape
 !hkpSampledHeightFieldShape
 hkpSampledHeightFieldShape_CoarseCast
 hkpSampledHeightFieldShapeCoarseMinMaxLevel
+!hkpSampledHeightFieldShape::CoarseMinMaxLevel
 hkpSampledHeightFieldShape.cpp
 hkpSampledHeightFieldShape_DdaCast
 hkpSerializedAgentNnEntry
@@ -23763,6 +24238,7 @@ hkpSerializedDisplayMarkerList
 hkpSerializedDisplayRbTransforms
 !hkpSerializedDisplayRbTransforms
 hkpSerializedDisplayRbTransformsDisplayTransformPair
+!hkpSerializedDisplayRbTransforms::DisplayTransformPair
 hkpSerializedSubTrack1nInfo
 !hkpSerializedSubTrack1nInfo
 hkpSerializedTrack1nInfo
@@ -23789,6 +24265,7 @@ hkpShapeInfo
 hkpShapeKeyTable
 !hkpShapeKeyTable
 hkpShapeKeyTableBlock
+!hkpShapeKeyTable::Block
 hkpShapePhantom
 hkpShapeShrinker.cpp
 hkpSimpleBreakableMaterial
@@ -23801,9 +24278,11 @@ hkpSimpleContactConstraintDataInfo
 hkpSimpleMeshShape
 !hkpSimpleMeshShape
 hkpSimpleMeshShapeTriangle
+!hkpSimpleMeshShape::Triangle
 hkpSimpleShapePhantom
 !hkpSimpleShapePhantom
 hkpSimpleShapePhantomCollisionDetail
+!hkpSimpleShapePhantom::CollisionDetail
 hkpSimulation
 !hkpSimulation
 hkpSimulationIsland
@@ -23827,24 +24306,35 @@ hkpStaticCompoundShapeBreakableMaterial
 !hkpStaticCompoundShapeBreakableMaterial
 hkpStaticCompoundShape.cpp
 hkpStaticCompoundShapeInstance
+!hkpStaticCompoundShape::Instance
+hkpStaticCompoundShape_Internals::AabbCastQuery::AabbCastCollectorWrapper
 hkpStaticCompoundShape_Internals.inl
 hkpStepResult
 hkpStiffSpringChainData
 !hkpStiffSpringChainData
 hkpStiffSpringChainDataConstraintInfo
+!hkpStiffSpringChainData::ConstraintInfo
 hkpStiffSpringConstraintAtom
 !hkpStiffSpringConstraintAtom
 hkpStiffSpringConstraintData
 !hkpStiffSpringConstraintData
 hkpStiffSpringConstraintDataAtoms
+!hkpStiffSpringConstraintData::Atoms
 hkpStorageExtendedMeshShape
 !hkpStorageExtendedMeshShape
 hkpStorageExtendedMeshShapeMaterial
+!hkpStorageExtendedMeshShape::Material
 hkpStorageExtendedMeshShapeMeshSubpartStorage
+!hkpStorageExtendedMeshShape::MeshSubpartStorage
+hkpStorageExtendedMeshShape::MeshSubpartStorage
 hkpStorageExtendedMeshShapeShapeSubpartStorage
+!hkpStorageExtendedMeshShape::ShapeSubpartStorage
+hkpStorageExtendedMeshShape::ShapeSubpartStorage
 hkpStorageMeshShape
 !hkpStorageMeshShape
 hkpStorageMeshShapeSubpartStorage
+!hkpStorageMeshShape::SubpartStorage
+hkpStorageMeshShape::SubpartStorage
 hkpStorageSampledHeightFieldShape
 !hkpStorageSampledHeightFieldShape
 hkpSweptTransformDisplayViewer.cpp
@@ -23860,6 +24350,7 @@ hkpTriangleShape
 hkpTriggerVolume
 !hkpTriggerVolume
 hkpTriggerVolumeEventInfo
+!hkpTriggerVolume::EventInfo
 hkpTriSampledHeightFieldBvTreeShape
 !hkpTriSampledHeightFieldBvTreeShape
 hkpTriSampledHeightFieldCollection
@@ -23888,6 +24379,7 @@ hkpVehicleCastBatchingManager
 hkpVehicleData
 !hkpVehicleData
 hkpVehicleDataWheelComponentParams
+!hkpVehicleData::WheelComponentParams
 hkpVehicleDefaultAerodynamics
 !hkpVehicleDefaultAerodynamics
 hkpVehicleDefaultAnalogDriverInput
@@ -23895,6 +24387,7 @@ hkpVehicleDefaultAnalogDriverInput
 hkpVehicleDefaultBrake
 !hkpVehicleDefaultBrake
 hkpVehicleDefaultBrakeWheelBrakingProperties
+!hkpVehicleDefaultBrake::WheelBrakingProperties
 hkpVehicleDefaultEngine
 !hkpVehicleDefaultEngine
 hkpVehicleDefaultSimulation
@@ -23904,6 +24397,7 @@ hkpVehicleDefaultSteering
 hkpVehicleDefaultSuspension
 !hkpVehicleDefaultSuspension
 hkpVehicleDefaultSuspensionWheelSpringSuspensionParameters
+!hkpVehicleDefaultSuspension::WheelSpringSuspensionParameters
 hkpVehicleDefaultTransmission
 !hkpVehicleDefaultTransmission
 hkpVehicleDefaultVelocityDamper
@@ -23916,22 +24410,27 @@ hkpVehicleEngine
 hkpVehicleFrictionDescription
 !hkpVehicleFrictionDescription
 hkpVehicleFrictionDescriptionAxisDescription
+!hkpVehicleFrictionDescription::AxisDescription
 hkpVehicleFrictionStatus
 !hkpVehicleFrictionStatus
 hkpVehicleFrictionStatusAxisStatus
+!hkpVehicleFrictionStatus::AxisStatus
 hkpVehicleInstance
 !hkpVehicleInstance
 hkpVehicleInstanceWheelInfo
+!hkpVehicleInstance::WheelInfo
 hkpVehicleLinearCastBatchingManager
 !hkpVehicleLinearCastBatchingManager
 hkpVehicleLinearCastWheelCollide
 !hkpVehicleLinearCastWheelCollide
 hkpVehicleLinearCastWheelCollideWheelState
+!hkpVehicleLinearCastWheelCollide::WheelState
 hkpVehicleManager
 !hkpVehicleManager
 hkpVehiclePerWheelSimulation
 !hkpVehiclePerWheelSimulation
 hkpVehiclePerWheelSimulationWheelData
+!hkpVehiclePerWheelSimulation::WheelData
 hkpVehicleRayCastBatchingManager
 !hkpVehicleRayCastBatchingManager
 hkpVehicleRayCastWheelCollide
@@ -23942,6 +24441,7 @@ hkpVehicleSteeringAckerman
 !hkpVehicleSteeringAckerman
 hkpVehicleSuspension
 hkpVehicleSuspensionSuspensionWheelParameters
+!hkpVehicleSuspension::SuspensionWheelParameters
 hkpVehicleTransmission
 hkpVehicleVelocityDamper
 hkpVehicleWheelCollide
@@ -23954,13 +24454,17 @@ hkpWeldingUtility
 hkpWheelConstraintData
 !hkpWheelConstraintData
 hkpWheelConstraintDataAtoms
+!hkpWheelConstraintData::Atoms
 hkpWheelFrictionConstraintAtom
 !hkpWheelFrictionConstraintAtom
 hkpWheelFrictionConstraintAtomAxle
+!hkpWheelFrictionConstraintAtom::Axle
 hkpWheelFrictionConstraintData
 !hkpWheelFrictionConstraintData
 hkpWheelFrictionConstraintDataAtoms
+!hkpWheelFrictionConstraintData::Atoms
 hkpWheelFrictionConstraintDataRuntime
+!hkpWheelFrictionConstraintData::Runtime
 hkpWorld
 !hkpWorld
 hkpWorldCinfo
@@ -23990,6 +24494,7 @@ hkReal
 hkRefCountedProperties
 !hkRefCountedProperties
 hkRefCountedPropertiesEntry
+!hkRefCountedProperties::Entry
 hkReferencedObject
 !hkReferencedObject
 hkReferencedObjectLock
@@ -24006,6 +24511,7 @@ hkrg
 hkRootLevelContainer
 !hkRootLevelContainer
 hkRootLevelContainerNamedVariant
+!hkRootLevelContainer::NamedVariant
 hkRotation
 hks
 hksc
@@ -24017,6 +24523,7 @@ hkSemanticsAttribute
 hkSemaphore
 hkSerializeDeprecated
 hkSerializeUtil.cpp
+hkSerializeUtil::savePackfile will not save an Xml Packfile as this format can lose data precision, writing a binary packfile instead. Use the deprecated packfile writer if you need an Xml Packfile
 hkSethkIntRealPairhkContainerHeapAllocatorhkMapOperationshkIntRealPair
 !hkSethkIntRealPairhkContainerHeapAllocatorhkMapOperationshkIntRealPair_typename
 hkSetIntFloatPair
@@ -24041,8 +24548,11 @@ hkSkinBinding
 !hkSkinBinding
 hkSkinnedMeshShape
 hkSkinnedMeshShapeBoneSection
+!hkSkinnedMeshShape::BoneSection
 hkSkinnedMeshShapeBoneSet
+!hkSkinnedMeshShape::BoneSet
 hkSkinnedMeshShapePart
+!hkSkinnedMeshShape::Part
 hkSkinnedRefMeshShape
 !hkSkinnedRefMeshShape
 hkSphere
@@ -24068,6 +24578,7 @@ hkTagfileWriter
 hktmrb
 hkTraceStream
 hkTraceStreamTitle
+!hkTraceStream::Title
 hkTransform
 hkTypeInfoRegistry
 hkTypeMax
@@ -24101,6 +24612,7 @@ hkVersionPatchManager
 hkVertexFormat
 !hkVertexFormat
 hkVertexFormatElement
+!hkVertexFormat::Element
 hkVtableClassRegistry
 hkWorkerThreadContext
 hkWorldMemoryAvailableWatchDog
@@ -24144,9 +24656,11 @@ hkxEdgeSelectionChannel
 hkxEnum
 !hkxEnum
 hkxEnumItem
+!hkxEnum::Item
 hkxEnvironment
 !hkxEnvironment
 hkxEnvironmentVariable
+!hkxEnvironment::Variable
 hkxIndexBuffer
 !hkxIndexBuffer
 hkxLight
@@ -24156,19 +24670,24 @@ hkxMaterial
 hkxMaterialEffect
 !hkxMaterialEffect
 hkxMaterialProperty
+!hkxMaterial::Property
 hkxMaterialShader
 !hkxMaterialShader
 hkxMaterialShaderSet
 !hkxMaterialShaderSet
 hkxMaterialTextureStage
+!hkxMaterial::TextureStage
 hkxMesh
 !hkxMesh
 hkxMeshSection
 !hkxMeshSection
 hkxMeshUserChannelInfo
+!hkxMesh::UserChannelInfo
+hkxMesh::UserChannelInfo
 hkxNode
 !hkxNode
 hkxNodeAnnotationData
+!hkxNode::AnnotationData
 hkxNodeSelectionSet
 !hkxNodeSelectionSet
 hkxScene
@@ -24186,6 +24705,7 @@ hkxSparselyAnimatedString
 hkxSpline
 !hkxSpline
 hkxSplineControlPoint
+!hkxSpline::ControlPoint
 hkxTextureFile
 !hkxTextureFile
 hkxTextureInplace
@@ -24195,12 +24715,15 @@ hkxTriangleSelectionChannel
 hkxVertexAnimation
 !hkxVertexAnimation
 hkxVertexAnimationUsageMap
+!hkxVertexAnimation::UsageMap
 hkxVertexBuffer
 !hkxVertexBuffer
 hkxVertexBufferVertexData
+!hkxVertexBuffer::VertexData
 hkxVertexDescription
 !hkxVertexDescription
 hkxVertexDescriptionElementDecl
+!hkxVertexDescription::ElementDecl
 hkxVertexFloatDataChannel
 !hkxVertexFloatDataChannel
 hkxVertexIntDataChannel
@@ -25081,6 +25604,7 @@ IgnroeWater
 IKする
 iKj
 ilb_param
+: illegal option --
 illuminant_dist
 illuminantinfo_%d
 Illust
@@ -25453,6 +25977,7 @@ interface_version
 internal
 internalData1
 Internal error
+internal error: static object marked for destruction more than once
 InternalFlags
 Internal Use. Horizontal traversabilty-test epsilon
 Internal Use. Vertical traversabilty-test epsilon
@@ -25504,6 +26029,10 @@ InvalidEscapeTimerVal
 INVALID_FACE_INDEX
 InvalidFallFrame
 InvalidIce
+Invalid JPEG file structure: missing SOS marker
+Invalid JPEG file structure: SOS before SOF
+Invalid JPEG file structure: two SOF markers
+Invalid JPEG file structure: two SOI markers
 Invalid memory pool code %d
 Invalid multiplicity
 INVALID_NODE_INDEX
@@ -25521,6 +26050,7 @@ InvalidReloadTime
 Invalid scan script at entry %d
 Invalid SOS parameters for sequential JPEG
 InvalidState
+Invalid tapered capsule: radii must differ by more than 2 percent.
 InvalidTgtTimerVal
 invalidTimes
 InvalidTimes
@@ -25790,6 +26320,7 @@ IsColNoHitPlayer
 IsCommon
 IsCommonAtSameAccount
 IsCommonCalcImpuleDamage
+IsCondition:  %d %s
 IsConfront
 IsConnectChild
 isConnectedToHandbrake
@@ -28540,6 +29071,7 @@ IsWolfLinkLayer
 IsWorld
 IsWorry
 is_worst_check
+is_worst_check:
 isxdigit
 IsXLinkHandling
 IsXZOnly
@@ -28839,6 +29371,11 @@ JerinHello
 JerinReturn
 JewelReset
 Jewelry
+JFIF APP0 marker: version %d.%02d, density %dx%d  %d
+JFIF extension marker: JPEG-compressed thumbnail image, length %u
+JFIF extension marker: palette thumbnail image, length %u
+JFIF extension marker: RGB thumbnail image, length %u
+JFIF extension marker: type 0x%02x, length %u
 JH5
 JiatoHello
 JJNp
@@ -28855,6 +29392,7 @@ JoyConWirelessStyleWarningCount
 @jP
 JPEG
 JPEG datastream contains no image
+JPEG parameter struct mismatch: library thinks size is %u, caller expects %u
 jpg
 JPja
 JPja USen USes USfr EUen EUes EUfr EUde EUit
@@ -29162,6 +29700,7 @@ KeyInputCheck
 KeyLockedShutter
 KeyName
 KeyNum_00
+key:%s asset:%s
 kfiC
 Kibako_Contain
 KibaTableName
@@ -29289,15 +29828,40 @@ ksky
 kString, kConst
 kString, kWString
 kSuccess, kInvalidOperation, kResFlowchartNotFound, kEntryPointNotFound
+ksys::calcEntryJob1
+ksys::calcEntryJob2
+ksys::calcEntryJob3
+ksys::CalcParallelGsysInitProcessJob
 ksys_cpp
 ksys.cpp
+ksys::CreateTeraSystem
 Ksys_DrawScene
+ksys::evt::OrderParam
+ksys::InitializeApp
 ksysla
 ksys_mask
+ksys::MessageDispatcher
+ksys::PhysicsEntitryWorldPre
+ksys::PreInitializeApp
+ksys::qst::ActorData
+ksys::qst::Indicator
+ksys::qst::Manager
+ksys::qst::Quest
+ksys::qst::Step
 KsysResGrayDummy
 KsysResNoMemoryDummy
 KsysResNotFoundDummy
 KsysResRestrictedDummy
+ksys::tera::Core
+ksys::tera::Core::Grass
+ksys::tera::Core::Model
+ksys::tera::Core::Tree
+ksys::tera::ImageResourceMgr
+ksys::tera::ResourceHolder
+ksys::tera::Scene
+ksys::tera::System
+ksys::tera::System::loadScene
+ksys::ui::ScreenBaseEx::StateID_Init
 /KSys/U-King.%s.%s
 ksysの各モジュールの終了処理完了
 ksysの各モジュールの終了処理開始
@@ -29833,6 +30397,7 @@ Leg_7_L
 Leg_7_R
 lek
 lel
+Len(%.1f/%.1f), CutCause:%s
 L_EnergyMeterDLC_00
 length
 Length
@@ -30326,6 +30891,7 @@ lO0
 Lo6
 loA
 Load
+LoadArea(%d, %d):
 LoadDone
 Load(ForSync)
 Loading
@@ -30611,6 +31177,7 @@ Lock
 locked
 lockedBuffer
 lockedBufferIndex
+LockedCacheMgr::allocLockedCache()
 lockedElements
 lockedVertices
 lockFlags
@@ -30830,6 +31397,7 @@ LQk
 LQl
 Lqq
 LqR
+l:r:
 Lr0
 LR0
 lr1
@@ -30839,11 +31407,20 @@ lr5
 LR6
 lra
 lRa
+lr::depth2normal_filter
+lr::depth_for_mask
+lr::depth_min_max
 lref
+lr::history
 lri
+lr::linear_depth_reduce
 LRMR
 lRotLimit
+lr::pre_color
+lr::pre_color_tmp
 lrq
+lr::reflect_cache
+lr::reflection
 @lS
 LS0
 Ls2
@@ -30901,7 +31478,9 @@ LtgetBoundariesNeighbors
 LtGsk
 LtGskAgent
 LtHeightField
+LthkaiWorld::stepWorld
 LthkpBvAgent
+LthkpWorld::getClosestPoints
 LtIntegrate
 LtInterIsland
 lTj
@@ -31453,6 +32032,7 @@ masked_light_shadow_only
 MaskedProjLight
 MaskedSpotLight
 MaskedSpotLightRig
+MaskedSpotLightRig::Obj
 Mask(lightprepass)
 MaskMinus
 mask_normal_weight_thre
@@ -31585,6 +32165,7 @@ matricesNames
 matricesOrder
 matrix_calc_type
 Matrix Calc Type
+mat:%s,
 mAttenuationForSky
 MatVisibility
 MatVisibilityAsset
@@ -32596,6 +33177,9 @@ Model/Horse_Link_Mane.bfres
 MODE_LINE_OF_SIGHT
 Model(Inner Mask Add)
 Model(Inner Mask Sub)
+ModelJobQueue::calc
+ModelJobQueue::preSort
+ModelJobQueue::update
 modeller
 model_light_buf
 Model/Link.Tex2.bfres
@@ -32631,6 +33215,7 @@ ModelResourceDivide
 ModelRig
 models
 Model/%s.bfres
+ModelScene::calc
 model_scene_env_data_set_num
 ModelScene(GBufferPreShading)
 ModelScene(GBufferPreShadingXlu)
@@ -33822,6 +34407,7 @@ NavMeshGuardWalk
 NavMeshJump
 NavMeshLiftWalk
 NavMeshLoadMgr
+NavMeshLoadMgr::finalize待ち
 NavMeshMoveWithAS
 NavMeshNonAvoidPlayer
 navMeshPathRequests
@@ -33949,6 +34535,7 @@ NeckSpeedHeal
 NeckSpeedShiekSensor
 NeckSpeedWait
 NeckUDAngle
+NeedLoadDynMap:%d FinishWork:%d
 needsInitialSmooth
 needsRepath
 need to alloc property
@@ -34444,6 +35031,7 @@ No stack trace available
 NoStop
 NoSwordCheck
 NoSync
+Not a JPEG file: starts with 0x%02x 0x%02x
 NotAndDo
 NotAndNot
 NotAuthenticated
@@ -37147,6 +37735,7 @@ NW_3DEditor6
 nw4f_bin
 nw4f_root
 nwPtclDataHeap
+nw::snd::TaskThread
 nxargsHeap
 nxJzj
 NZDT
@@ -37170,6 +37759,7 @@ OasisStudent_C_Book
 OBArea
 obbA
 obbB
+OBB : %s
 Obj
 objAabb
 Obj_Album
@@ -37513,10 +38103,14 @@ Off起動
 Offシグナルで起動
 ofx
 OfxLargeLensFlareImpl
+OfxLargeLensFlareImpl::Preset
 OfxLargeLensFlareRig
 OfxLensFlare
 OfxLensFlareDynamic
+OfxLensFlareDynamic::Preset
 OfxLensFlareImpl
+OfxLensFlareImpl::Preset
+OfxLensFlare::Preset
 OfxLensFlareRig
 ofx_num_large_lens_flare_rig
 ofx_num_large_lens_flare_rig_obj
@@ -37533,6 +38127,7 @@ ogg
 OkAutoPlacementEnemyDeadlyQuest
 OkobaTalkCam
 OkPathFailRange
+ok : skip actor create
 old
 OldKorok_Fld_1st
 OldKorok_Fld_2nd
@@ -37824,6 +38419,7 @@ OptionalWeaponAI
 OptionHitReactionDelay
 OptionInfo
 Option_LatestAoCVerPlayed
+: option requires an argument --
 option.sav
 OptionWindow_00
 optRPM
@@ -37858,6 +38454,9 @@ originalVolume
 originBoneSpace
 origShapeKey
 ormalButton
+ORNode://U-King/サウンド/aal/リスナーマネージャ/リスナー/デフォルトリスナー:リスナー指向性
+ORNode://U-King/サウンド/aal/リスナーマネージャ/リスナー/デフォルトリスナー:設定情報
+ORNode://U-King/NPC/%s/%s:パラメータ
 _orR
 orthogonalAxis
 OrthoProjection
@@ -38737,6 +39336,8 @@ particleFriction
 particleIndex
 particleMass
 ParticleMgr
+ParticleMgr::_pushCalcEmitterJob
+ParticleMgr::_pushParticleCalcJob
 ParticleParent
 ParticlePass_ColorCopyAfter
 ParticlePass_DepthShadow
@@ -38858,6 +39459,7 @@ Patroller4
 Patroller5
 Patroller6
 Patroller7
+patrol_time:
 pattern
 Pattern
 Pattern1AtX
@@ -39844,6 +40446,7 @@ PlayerDestinationTurn
 PlayerDestinationTurnRefActor
 PlayerDestinationTurnStarter
 PlayerDestinationTurnWithAnim
+player_dir:
 PlayerDisplayWait
 PlayerDiveMove
 PlayerDiveWater
@@ -39963,6 +40566,7 @@ PlayerParasailAltitude
 PlayerParashawlGlide
 PlayerPickUp
 PlayerPlayASAdapt
+player_pos:
 PlayerPos
 PlayerPosBoard
 PlayerPosition_Demo702_0
@@ -40114,6 +40718,8 @@ PlayReport_PlayTime_Handheld
 Play_Shimotsuke_WhiteDragon
 playskeltalanim
 PlayTime
+PlayTime %02d:%02d / ∞
+PlayTime %02d:%02d / %02d:%02d
 PlayTimeAll
 PlayTimeConsole
 PlayTimeHandheld
@@ -40221,6 +40827,7 @@ POINT_LIGHT
 point_light_falloff_type
 point_light_indirect
 PointLightRig
+PointLightRig::Obj
 PointLightView
 PointMask
 PointName
@@ -40286,6 +40893,7 @@ PosDensityChgRange
 PosDensityChgSpeed
 pos_dist_thre
 Pose
+pos( %f, %f, %f ) chm::Object
 pos( %f, %f, %f ) Tree
 PosHeight
 PosInAllList
@@ -40326,6 +40934,8 @@ PosRestRatio
 PosStayRatio
 POST
 PostAreaNo
+PostBg::PlayerAfter
+PostBg::PlayerBefore
 PostBoundReactionKeys
 #---PostCalc---#
 PostDraw(DRC)
@@ -40471,6 +41081,7 @@ PrCloudV1_%d
 PrCloudVd
 pRD
 PreActorBuildModel
+メモリ preActor:%dk info:%dk result:%dk mass:%dk clustered:%dk
 PreASSelector
 PreAttack
 PreAttackASLeft
@@ -40779,11 +41390,14 @@ Product
 ProductFormat
 production
 production_format
+production_format:
 ProductReportBackGround Heap
 ProductReportBackGround Thread
 ProductReporter Heap
 profile
 ProfileUser
+Program: %d
+Program:%d Resource:%d
 Progress
 Prohibit_App_CurseR
 ProhibitedCreateArea
@@ -40970,6 +41584,7 @@ PuruaRain
 PuruaTrunEnd
 PuruaTrunStart
 Push
+push B : skip actor create
 PushContinueTime
 push_%d
 PushNoticeLookTime
@@ -41127,6 +41742,7 @@ QoyD
 qsort
 qSpecialNewDelete
 qSpecialNewDeleteArray
+qst::Manager
 qT~w
 Quad
 QUAD
@@ -41918,6 +42534,7 @@ Reduce Alpha の pow
 Reduce Alpha の 閾値
 ReduceAncientEnemyDamge
 reduce_%d
+reduce:%d
 reduced_buffer
 ReducedBuffer
 reduced_buffer_16bit
@@ -42435,10 +43052,15 @@ render_buffer_color
 render_buffer_depth
 render_cubemap_color
 render_cubemap_depth
+RenderDisplay::calcGPU
+RenderDisplay::draw(Large)
+RenderDisplay::draw(Middle)
+RenderDisplay::draw(Small)
 RenderEnabled
 renderer
 renderer-0
 renderer-2
+Renderer::calc
 render_frame
 render_grid
 rendering_repetition_num
@@ -42516,6 +43138,7 @@ RerouteTimeMin
 res
 rescale_frequency_thre
 rescaleMass
+res::Compaction
 ReserveHitWaitBeat
 ReserveOutroWaitBeat
 ReserveParashawlStart
@@ -42577,6 +43200,7 @@ ResistHotAndWakeWind
 ResistLightning
 ResistThunder
 resolution
+resolution:
 resolutionMode
 resolutionRoundingMode
 resolveDeleteVfxResource待ち
@@ -42584,6 +43208,8 @@ ResolvePenetrationRadiusScale
 ResolvePenetrationSearchRadius
 resource
 Resource Control
+Resource: %d
+ResourceEditor::calc
 ResourceFlowchart
 resourceHandles
 ResourceInfoContainer
@@ -42610,8 +43236,11 @@ RESPONSE_REPORTING
 RESPONSE_SIMPLE_CONTACT
 responseType
 ResponseType
+res::ResourceMgrTask
 res_shape
 res_shape_num
+res::System
+res::System::calc
 Rest
 Rest2
 RestActor
@@ -42655,15 +43284,45 @@ Rest_To_Stand
 RestWithHorse
 res_type_id
 Result
+ResultAccessIdMisMatch: 指定された Access ID がタグに書かれているものと一致しないため、アプリケーション専用領域へアクセスできません。
+ResultAlreadyCreated: アプリケーション専用領域が既に作成されています。
+ResultBackupError: バックアップデータへのアクセスに失敗しました。
+ResultBackupOpenFailed: バックアップファイルを開けませんでした。
+ResultBackupReadFailed: バックアップファイルからの読み込みに失敗しました。
+ResultBackupWriteFailed: バックアップファイルへの書き込みに失敗しました。
+ResultBufferIsSmall: 指定されたバッファのサイズが不足しています。
 RESULT_CANT_ADVANCE
+ResultCharacterNotFound: 指定された ID に対応するキャラクターが見つかりませんでした。ID が正しいか確認してください。
 ResultCompare
+ResultConnectionError: 接続エラーです。タグとの通信が正常に行えなかった可能性があります。
+ResultDataAccessFailed: システムデータへのアクセスに失敗しました。
+ResultFailed: 処理に失敗しました。
 RESULT_FAILURE
+ResultFatalError: 致命的なエラーが発生しました。
 RESULT_HIT_BOUNDARY_EDGE
 RESULT_HIT_REJECTED_EDGE
 RESULT_IN_PROGRESS
 RESULT_IN_USE
+ResultInvalidAlignment: アライメントが不正です。
+ResultInvalidArgument: 不正な引数です。指定されている引数を見直してください。
+ResultInvalidFormatVersion: 対応していないフォーマットバージョンです。
 RESULT_INVALID_INPUT
+ResultInvalidOperation: 不正な要求が発行されました。API の呼出し手順を見直してください
+ResultInvalidPointer: 無効なポインタが指定されました。
+ResultInvalidUsage: API の使用方法が正しくありません。
+ResultIsBusy: 処理中のため、コマンドを受け付けない状態にあることを示します。
 ResultLoanRupee
+ResultNeedCreate: アプリケーション専用領域が作成されていません。
+ResultNeedFormat: タグが壊れていますが、バックアップデータが存在しないため、タグの内容を復元できません。
+ResultNeedRegister: 共用領域が作成されていません。amiibo 設定での登録が必要です。
+ResultNeedRetry: このエラーが返ってきたら、再度同じ API を実行してください。タグとの通信が不安定だった可能性があります。
+ResultNoBackupFile: バックアップファイルが存在しないため、API を使用できません。
+ResultNoData: データが存在しません。
+ResultNotBroken: タグが壊れていないため、復元は不要です。
+ResultNotFound: 処理対象が見つかりませんでした。
+ResultNotImplemented: 未実装
+ResultNotSupported: サポートしていないタグです。タグが正しいか確認してください。
+ResultOperationFailed: 要求された操作に失敗しました。API の使用方法を確認してください。
 RESULT_REACHED_BOUNDARY_CHECK_LIMIT
 RESULT_REACHED_GOAL
 RESULT_REACHED_ITERATION_LIMIT
@@ -42671,8 +43330,12 @@ RESULT_REACHED_PATH_LENGTH_LIMIT
 RESULT_REACHED_RADIUS_LIMIT
 result_sampler_linear
 RESULT_SUCCESS
+ResultTagNotFound: 処理対象のタグが見つかりません。処理中にタグが離されたか、すり替えられた可能性があります。
+ResultTimeOutError: タイムアウトエラーです。DRC またはタグからの応答がありません。
 resultToRuntime
 ResultType
+ResultUidMisMatch: UID が一致しません。
+ResultUnexpected: 予期しないエラーです。システムに致命的なエラーが発生している可能性があります。
 ResumeLeadDistance
 RetargetCooldownCounterLength
 RetargetCooldownCounterRand
@@ -42807,6 +43470,7 @@ ReviseMode
 ReviseModeEnd
 ReviseModeRunning
 revision
+revision:
 Revision
 RevivalBloodyMoon
 RevivalFlag
@@ -42921,6 +43585,7 @@ RigidBody_Leg_2_R
 rigid_body_name
 RigidBodyName
 RigidBodyName%d
+RigidBodyRequestMgr::Water
 RigidBodySet
 RigidBodySetName
 RigidBody_Spine_1
@@ -43242,6 +43907,8 @@ RootPane
 /Root/Rest
 /Root/ReturnRestPos/Turn
 RootTask
+RootTask::calc
+RootTask::prepare
 /Root/Timeline/
 /Root/Timeline/Wander/
 /Root/Timeline/Wander2/
@@ -43730,6 +44397,7 @@ RoutePoint9to8MoveAS
 RoutePoint9to8Schedule
 RoutePoint9to8WaitAS
 RoutePoint9to8WaitFrame
+RouteRailTracePointName::setPointNameArrayでの指定で、ポイントが２つ以上ありません
 RouteType
 Routing
 RoyalGuard
@@ -43836,6 +44504,7 @@ _%s
 (%s)
 ) %s.
 ***.%s
+%s :
 %s_
 %s,
 %s/
@@ -43850,6 +44519,7 @@ _%s
 %s_%02d
 %s%02d
 %s%02d%s
+%s %02u:%02u
 %s_%03d
 %s/%04d.tga
 %s/%05d.tga
@@ -43861,6 +44531,7 @@ s32_array_data
 s32_data
 %s%3d_%1d
 %s %3d %3d
+%s:%.3f秒
 @s5
 @s6
 @S6
@@ -44179,10 +44850,12 @@ ScrollSpd
 %s_%d
 %s%d
 @sD
+SDCard: %s
 SDCardValid
 %s/%d-%d.hknm2
 %s/%d-%d.hktmrb
 %s %d/%d (%lld.%lldsec)
+%s, %d, %d, %s, ( %p:%p )
 %s_DeathCount
 SDemo_D-6
 SDemo_E-6
@@ -44192,10 +44865,36 @@ SdkAssert
 sdk_bin_dir
 SdkRequires
 sdk_version
+%s:%d Panic:
+%s(%d): %s: %s
+%s(%d:%s)の計算結果が不正です。
 %s/Dummy.b%s
 sdw
 スロー（SE）
+sead::AppCalc
+sead::AudioTaskThread
+sead::BtmAppDraw
+sead::BtmAppDrawFinal
+sead::BtmRootDraw
+sead::BtmSysDraw
+sead::ControllerMgr
+sead::FileDeviceMgr
+sead::ForegroundBucket
+sead::GameConfig
+sead::MainThread
 SeadMenu
+sead::MethodTreeMgr
+sead::OverlayArena
+sead::ResourceMgr
+sead::RootCalc
+sead::SysCalc
+sead::SystemManagers
+sead::TaskMgr
+sead::ThreadMgr
+sead::TopAppDraw
+sead::TopAppDrawFinal
+sead::TopRootDraw
+sead::TopSysDraw
 SeakSensorPictureIndex
 SeakSensorPictureSize
 seal
@@ -45157,6 +45856,7 @@ ShowDialogTargetActorName
 ShowDist
 ShowGetDemoCookResult
 ShowGetDemoDialogByName
+ShowInfo   :  %3.1f %d
 ShowkSS
 ShowLargeSword
 ShowLevel
@@ -45773,6 +46473,7 @@ slotConversions
 SlotFlags
 slotId
 slots
+slot:%s
 slotStart
 Slow
 SlowContTime
@@ -45894,6 +46595,9 @@ SnapshotDepth
 snapshotFilename
 SnapshotTextureMgr
 snd
+snd::BarslistArchive
+snd::InfoData
+snd::ListenerPoser
 SndOcclusion InDoor
 Snd_%s
 snd_StreamSoundLoader.h
@@ -46064,7 +46768,10 @@ SpearWeaponSelect
 special
 _Special
 Special_00.bffnt
+special_actor_dir:
 special_actor_name
+special_actor_name:
+special_actor_pos:
 SpecialAttackRadius
 SpecialAttackRate
 SpecialDrop
@@ -46180,6 +46887,8 @@ SplitAndGenerateOptions
 SPLIT_FAILURE
 SPLIT_FAILURE_INSIDE
 SPLIT_FAILURE_OUTSIDE
+SplitJob::AllAfter
+SplitJob::PlayerAfter
 splitMethod
 SplitMethod
 SplitResult
@@ -46199,6 +46908,7 @@ spot_light_indirect
 spot_light_penumbra_degree
 spot_light_penumbra_exp
 SpotLightRig
+SpotLightRig::Obj
 SpotLightView
 Sprain_Gear1
 SpreadDist
@@ -46276,6 +46986,8 @@ SRTHash
 %s_%s
 %s-%s
 %s,%s
+%s://%s
+%s:%s
 %s/%s
 %s.%s
 %s(%s)
@@ -46366,6 +47078,7 @@ ssocclusion
 SSS Buffer %d
 %s/%s/%s.fxparam
 %s_%s_slim
+%s:%s%s(%s)
 %s/%s_%s.%s
 %s/%s/%s/%s
 sssss
@@ -46566,6 +47279,7 @@ Start_Npc_TamourHatago001_EachFrame
 Start_Npc_TamourHatago001_Near
 Start_Npc_TamourHatago001_Talk
 Start of Image
+Start Of Scan: %d components
 startPoint
 StartPoint
 StartPoint_Start
@@ -46613,12 +47327,74 @@ State%d
 State_Exchangeable
 STATE_FOLLOWING_PATH
 STATE_GOAL_REACHED
+::StateID_Active
+::StateID_AddRupee
+::StateID_AddStockNum
+::StateID_AlbumSaveCheck
+::StateID_AocError
+::StateID_AppearCount
+::StateID_BookSaveCheck
+::StateID_CannotDelete
+::StateID_CantUseHeroSoulWindowOpen
+::StateID_ChangeDisplay
+::StateID_CheckPicture
+::StateID_ConfirmDelete
+::StateID_ContentSwitch
+::StateID_ControllerWindowOpened
+::StateID_ControllerWindowOpening
+::StateID_Delete
+::StateID_Demo
+::StateID_DisplayDetail
+::StateID_DisplayList
+::StateID_Download
+::StateID_ExitConfirmation
+::StateID_Field
+::StateID_FileSelect
+::StateID_Init
+::StateID_Initial
+::StateID_InvalidShortCut
+::StateID_LunchTitle
+::StateID_Main
+::StateID_Menu
+::StateID_MenuMoving
+::StateID_Move
+::StateID_Movie
+::StateID_NewSave
+::StateID_NumCount
+::StateID_OpeningSystemWindow
+::StateID_OptionOpened
+::StateID_OptionOpening
+::StateID_Pouch
+::StateID_Quest
+::StateID_RecipeOpen
+::StateID_Reload
+::StateID_RotateMode
+::StateID_Save
+::StateID_SelectDelete
+::StateID_SetSensorTarget
+::StateID_Shooting
+::StateID_StageMgr
+::StateID_StageSelect
+::StateID_StageTransition
+::StateID_Sub
+::StateID_SystemWindowOpen
+::StateID_SystemWindowOpened
+::StateID_SystemWindowOpening
+::StateID_TempHidden
+::StateID_Wait
+::StateID_WaitAnimClose
+::StateID_WaitCloseMenu
+::StateID_WaitDownloadEnd
+::StateID_WaitForStageBegin
+::StateID_WaitOpened
+::StateID_WarningWindowOpen
 StateKey
 STATE_MANUAL_CONTROL
 STATE_NEEDS_NEW_PATH
 STATE_PATH_FAILED
 STATE_REPATHING_INCOMPLETE_PATH
 StateRot
+state:%s,
 STATE_SLOWING_TO_GOAL
 STATE_WANDERED_OFF_PATH
 STATIC_AIR_WALL_FOR_HORSE
@@ -47387,6 +48163,7 @@ Subarctic_01
 Subarctic_02
 Subarctic_03
 Subarctic_04
+SubArea : %d
 SubAS
 SubASSlot
 subchallnpc000
@@ -47412,6 +48189,7 @@ SubmergedDepth
 SubmitFile
 SubmitStocker
 SubMstxt
+SubOBB : %s
 SUBPART_MATERIAL_INDICES_MASK
 SUBPART_MATERIAL_INDICES_SHIFT
 SUBPART_NUM_MATERIALS_MASK
@@ -47878,6 +48656,8 @@ SwkbdCalcSubThreadFont__3RplFv
 SwkbdCalcSubThreadPredict__3RplFv
 SwkbdConfirmUnfixAll__3RplFv
 SwkbdCreate__3RplFPUcQ3_2nn5swkbd10RegionTypeUiP8FSClient
+SWKBD: Create failed. CreateArg.mBuffer is NULL.
+SWKBD: Create failed. CreateArg.mFSClient is NULL.
 SwkbdDestroy__3RplFv
 SwkbdDisappearInputForm__3RplFv
 SwkbdDisappearKeyboard__3RplFv
@@ -47995,6 +48775,7 @@ sysFrameBufferTexture
 sysInitRotateAttr
 sysInPos
 sysInVec
+sys::Layer2D
 sysLocalDiffAttr
 sysLocalPosAttr
 sysLocalVecAttr
@@ -48020,6 +48801,7 @@ SystemComponent
 SystemComponentGroup
 SystemDelete
 SystemDummy
+SystemELink::allocAssetExecutor failed.
 SystemFadeOutSleep
 System/font/gx2_font/debug_font.gsh
 System/font/gx2_font/debug_font.gtx
@@ -48048,6 +48830,8 @@ systemSameGroupActorName
 System/Sead/primitive_renderer_cafe.gsh
 SystemSetWindAction
 SystemSleep
+SystemSLink::allocAssetExecutor failed.
+SystemTask::calcFrame
 SystemUI
 System/Version.txt
 System/Visualizer/shader.sharc
@@ -48408,6 +49192,7 @@ tanThetaSqr
 tanThetaVecNeg
 T_AoCVersion_00
 tapActorParamMgr
+tap::ActorParamMgr
 TapButton
 TapButtonAnim
 T_Area_00
@@ -48713,12 +49498,15 @@ Tentacle
 Tepmlate Name
 tera
 tera_
+tera::ApertureMaps::updateMap
 TeraBack
 TeraBye
 tera_common
+tera::Core
 TeraCough
 TeraCurrentQuad
 tera_curve
+Tera: %d
 tera_debug
 tera debug - aperture
 tera debug - edit
@@ -48734,6 +49522,7 @@ teraGrass IsThereGroundObject
 tera_height
 TeraHi
 teraImageResourceMgr
+tera::ImageResourceMgr
 TeraLocalInfo
 tera_mat
 tera_material
@@ -48755,6 +49544,8 @@ TeraSZSWork
 TeraTerrain
 TeraTree
 _TeraTree.blwp
+tera::update_frame
+tera::update_grid
 tera_water
 TeraWater
 TeraWaterDisable
@@ -48788,14 +49579,17 @@ Terrain.bfres
 Terrain.bfres読み込み
 TerrainCalcCenter
 TerrainCalcCenterTag
+terrain_center:
 Terrain/Data/%s.tscb
 terrain_embedded_edge
 TerrainHeightField
 terrain_hidden
 TerrainHideCenter
 TerrainHideCenterTag
+terrain hide ratio : %f (%f)
 terrain_info
 terrain_is_in_door
+terrain_level:
 terrain_material
 Terrain Scene
 Terrain/System/tera_resource.Cafe_Cafe_GX2.release.sarc
@@ -48989,6 +49783,7 @@ texture_array_index2
 texture_array_index3
 texture_array_index4
 texture_array_index5
+Texture::ClearAllCache
 texture_clrmtx_2d
 texture_clrmtx_2d_array
 texture_color_drift
@@ -49001,8 +49796,10 @@ texture_dir
 texture_filter_param
 texture_gamma
 TextureHandleMgr
+TextureHandleMgr::calc
 TextureIdx%d
 TextureInfo%d
+Texture::InvalidateUser
 TextureList
 texture_mult_color
 texture_multi_sample_1x
@@ -49020,6 +49817,7 @@ TextureType
 TEXTURE_TYPE
 texture_type_num
 TextureUsageType
+Texture::ValidateUser
 TextWindow
 TextWindowChange
 TEX_UNKNOWN
@@ -49129,12 +49927,14 @@ ThirdStepHeight
 ThirdUnitePosOffset
 ThirdUniteRotOffset
 This flag determines whether the character controller refreshes the manifold when checkSupport is called. By default this is set to false, i.e. the manifold is not updated. This leads to a small inaccuracy when the character controller is hit by a rapidly accelerating body, however it is better to accept this inaccuracy, as the extra refresh manifold call can be computationally expensive.
+This gain allows for precise matching between keyframes and the current position. It works like the m_positionGain: it calculates an optimal deltaVelocity, scales it by m_snapGain, clips it against m_snapMaxXXXVelocity and scales it down if the implied positional difference is larger than m_snapMaxXXXXDistance.
 This gain controls the proportion of the difference in acceleration that is applied to the bodies. It dampens the effects of the velocity control.
 This gain controls the proportion of the difference in position that is applied to the bodies. It has the most immediate effect. High gain values make the controller very stiff. Once the controller is too stiff it will tend to overshoot. The velocity gain can help control this.
 This gain controls the proportion of the difference in velocity that is applied to the bodies. It dampens the effects of the position control.
 This gain dampens the velocities of the bodies. The current velocity of the body is scaled by this parameter on every frame before the controller is applied. It is applied every step and is generally more aggressive than standard linear or angular damping. A value of 0 means no damping.
 ThisIsError
 THIS_OBJECT_ONLY
+This parameter blends the desired target for a bone between model space: zero, or local space: one. Usually the controller will be much stiffer and more stable when driving to model space. However local space targeting can look more natural.
 This sets the max angular distance for the snap gain to work at full strength. The strength of the controller peaks at this distance.
 This sets the max linear distance for the snap gain to work at full strength. The strength of the controller peaks at this distance.
 thisUid
@@ -49290,6 +50090,7 @@ TimeNight
 TimeOff
 Timeout
 TimeOut
+Timeout:%d
 TimeoutFrame
 Timer
 TimeRand
@@ -49454,6 +50255,11 @@ T_MainName_00
 T_Max_00
 T_Message_00
 T_Message_01
+Tmln:ムービー
+Tmln:Worldミュート
+Tmln:装備ずれ以外
+Tmln:装備ずれ天候以外
+Tmln:ロード裏
 TmpActorParamMgr
 tmp_filename
 tmp_heap
@@ -49530,6 +50336,7 @@ ToHomeMtxLocal
 toi
 toiCollisionResponseRotateNormal
 TOI counter
+TOI event queue full, consider using HK_COLLIDABLE_QUALITY_DEBRIS for some objects or increase hkpWorldCinfo::m_sizeOfToiEventQueue
 ToIndoorFadeSec
 ToIndoorWaitSec
 TOI_OP
@@ -49551,7 +50358,9 @@ TooFarPathDist
 TooFarXZ
 tool
 tool_error_code
++:ToolFrontEnd
 tool_param
+Too many color components: %d, max %d
 Too many threads
 ToonBye
 ToonHello
@@ -50062,6 +50871,7 @@ TreeGhost_
 TreeListHeap
 TreeMaple_
 treeNode
+TreeNum: %5d
 TreePalm_
 TreePalmJungle_
 treePtr
@@ -50148,6 +50958,7 @@ Tropical_02
 Tropical_03
 Tropical_04
 true
+: true
 True
 TRUE
 TrueFormActorName
@@ -50208,6 +51019,7 @@ TT4
 tt5
 Tt5
 Tta
+TtAabbCastQuery::processLeaf
 Ttaabbs
 TtAbstractSearch
 TtactAddCb
@@ -50311,6 +51123,10 @@ Ttdraw
 TtDrive Collidables
 TtDsblConstr
 TtdynamicNavMeshModifiedCallback
+TtDynMediator::castBidirectionalRay
+TtDynMediator::castRay
+TtDynMediator::castSphere
+TtDynMediator::queryAabb
 T_Temp_00
 TtEnblConstr
 TtEndOfStepCbs
@@ -50347,17 +51163,26 @@ TtgetSilhouetteFromPointCloud
 TtgetSupportInfo
 TtGsk
 TtHeightField
+TthkaiOverlapManager::getUpdatedFaces
 TthkContactPointViewer_displayArrow
+TthkMath2d::convexHullIndices
+TthkpAabbPhantom::linearCast
+TthkpActiveContactPointViewer::postSimulationCallback
 TthkpBroadphaseViewer
 TthkpConstraintViewer
+TthkpContactPointViewer::drawAllContactPointsInIsland
 TthkpConvexRadiusViewer
+TthkpInconsistentWindingViewer::postSimulationCallback
 TthkpMidphaseViewer
 TthkpPhantomDisplayViewer
 TthkpRigidBodyCentreOfMassViewer
 TthkpRigidBodyInertiaViewer
+TthkpShapeCollection::getAabb
 TthkpShapeDisplayViewer
 TthkpSimulationIslandViewer
 TthkpSweptTransformDisplayViewer
+TthkpVehicleViewer::step
+TthkpWeldingViewer::postSimulationCallback
 T_Time_00
 T_Timer_00
 TtimpLimitCb
@@ -50375,6 +51200,7 @@ TtiterateCollidables pinch-enabled
 T_Title_00
 T_TitleDLC_00
 TTJ
+TtLimitedAabbQuery::processLeaf
 TtlinearSearch
 TtlineOfSight
 TtList3
@@ -50424,6 +51250,7 @@ TtrayBundleTriangle
 TtRayCastFSP
 TtRayCastGroup
 TtRayCast Query
+TtRayCastQuery::processLeaf
 TtRayCastSimpl
 TtRayCstCached
 TtRayCstCchSim
@@ -50467,6 +51294,14 @@ TtsamplePose
 TtSampleRefPoseChunk
 TtSampleSpline
 TtSampleSplineChunk
+TtSCS::castAabb
+TtSCS::castRay
+TtSCS::castRayWithCollector
+TtSCS::getAabb
+TtSCS::getChildShape
+TtSCS::getCollisionFilterInfo
+TtSCS::queryAabb
+TtSCS::queryAabbImpl
 TtsendProps
 TtSetMassChang
 TtsetMotionTypeCb
@@ -50500,6 +51335,11 @@ TtSphereSphere
 TtSphereTri
 TtSplitIsle
 TtStandard Links MX
+TtStaticTree::castBidirectionalRay
+TtStaticTree::castRay
+TtStaticTree::castSphere
+TtStaticTree::GCP
+TtStaticTree::queryAabb
 TtStretch Links MX
 TtSubstep Collidables
 TtToiDisplayArrow
@@ -50507,6 +51347,7 @@ TtTOIs
 TtTransfer Motion
 TtTransform
 TtTransition Constraints
+TtUnlimitedAabbQuery::processLeaf
 TtUpdate AABBs
 TtUpdate All Vertex Frames (N)
 TtUpdate All Vertex Frames (T)
@@ -50534,6 +51375,7 @@ TtWaitForSignal
 TtWaitForSolverCallbacks
 TtWaitForWorkerThreads
 Ttwalk
+TtWatchDog:FreeMem
 Ttweld
 TtworldCastRay
 TtworldCastRayCollector
@@ -51041,12 +51883,14 @@ ui2d
 ui2d_BuildinShader_Nvn_Binary
 UI/Album/pict_%03d.jpg
 uiAppPictureBook_00Screen
+ui::ArcResourceMgr
 UIAreaInfo
 uid
 UiDist
 UiHeap
 UiInfoString
 uiItemPointer_00PAScreen
+ui::LayoutResourceMgr
 uiLowPrioThreadMgr
 uiMainScreen_00Screen
 uiManager
@@ -51123,6 +51967,7 @@ U-King
 UKingCircleLight
 UKingContext
 UKingCookSetLight
+uking::DebugLayer
 uking_deferred_compare_material_id
 UKingDgnEntranceLight
 UKingDgnGoalLight
@@ -51145,8 +51990,12 @@ UKingEmitEffectLoopAction
 uking_enable_hide_normal_pass
 uking_enable_map_rendering
 uking_enable_map_rendering, uking_map_layer_id
+uking::event::GameEventSystemQuery
 ukingEventMgr
 uking_flower
+uking::frm::ErrorViewerTask
+uking::frm::RootTask
+uking::frm::System
 uking_grass
 uking_grudge_slime_mold
 UKingHeadLight
@@ -51169,6 +52018,8 @@ UKingRingLight
 uking_sampler_use_array
 ukingSaveMgr
 UKingSearchLight
+uking::Stage::ForBaseProcDual
+uking::StageSelect::drawObj
 uking_sys
 uking_terrain
 uking_terrain_route
@@ -51179,7 +52030,12 @@ uking_texture_array_texture2
 uking_texture_array_texture3
 uking_texture_array_texture4
 uking_texture_array_texture5
+uking::Title::drawObj
 uking_tree
+uking::ui::CaputureJpegWork
+uking::ui::SwkbdMgr
+uking::ViewerStage::draw2D
+uking::ViewerStage::draw3D
 uking_vtx_position_modify_shadow_only
 uking_wind_vtx_transform_lie_intensity
 uk_kari_chemical_ice_ratio0
@@ -51393,6 +52249,7 @@ Unknown APP14 marker (not Adobe), length %u
 Unknown class member found during write of data.
 Unknown class member found during write of plain data array.
 Unknown class member type found!
+Unknown class member type in structureLayout::getMemberSize().
 Unknown Error.
 UnknownEvent
 UnknownNPC
@@ -51420,6 +52277,7 @@ unsimplifiedNavMesh
 unsupported
 Unsupported color conversion request
 Unsupported JPEG data precision %d
+Unsupported JPEG process: SOF type 0x%02x
 Unsupported marker type 0x%02x
 UntillPassGameClock
 UntillPassRealClock
@@ -52374,6 +53232,8 @@ Visualizer
 VJ0@
 VLA allocation failed
 vLen
+vlt::CameraMgrTask
+vlt::LayerMgrTask
 vNormal
 vNz4
 Vo_Attention
@@ -52623,8 +53483,11 @@ Warn
 WarnBlinkTime
 Warning
 WarningClear
+Warning: File minor version is greater than that of code.
 Warning_Npc_MiniGame_Golf_StepStart
 Warning_Npc_NakedIslandPriest_StepStart
+Warning: thumbnail image size does not match data length %u
+Warning: unknown JFIF revision number %d.%02d
 WarnNoticeTime
 WarnNoticeTimeRnd
 WarnRatio
@@ -52681,6 +53544,7 @@ WarpProhibition
 WarpProhibitionArea
 WarpProhibitionArea_Fire_Relic
 WarpSafeTagRoot
+warp:%s clip:%s touch:%s
 WarpStartDist
 WarpTagRoot
 WarpTime
@@ -53308,6 +54172,8 @@ WindDirZ
 wind_drag
 windEmit
 WindEmitter(Continuous)
+WindEmitter(Oneshot:Capsule)
+WindEmitter(Oneshot:Sphere)
 wind_enable
 wIndexMask
 WindFlyingDist
@@ -53582,12 +54448,14 @@ writeLock
 Write to EMS failed
 Write to XMS failed
 written
+Wrong JPEG library version: library is %d, caller expects %d
 wsd
 wss
 WW_
 W_Warrior
 w~wyw
 w悯
+%x:
 x~@
 x_@
 x@@
@@ -53915,6 +54783,7 @@ xlD
 XlD
 XlG
 xlink
+xlink:
 XLink
 XLink,
 xlinkAssetExecutor
@@ -53922,6 +54791,7 @@ xlinkContainer
 XLinkCreateForSandworm
 XLinkCreateModelTracks
 XLinkCreateToParts
+XLink:%d クロス:%d アテンション:%d
 xlink_emits
 XLinkEventCreateAction
 XLinkEventEnable
@@ -53929,6 +54799,7 @@ XLinkEventFadeAction
 XLinkEventKillAction
 XLinkHandleIndex
 xlink_hidden
+xlink::InfoData
 XLinkInfoData
 XLinkKey
 XLinkSettingFootStepProcTypeName
@@ -53939,6 +54810,8 @@ XLinkSettingIsReactionTargetTinyEnemy
 XLinkSettingPropertyTableName
 XLinkSettingVeloClampThreshold
 XLinkSettingVeloRollClampThreshold
+XLinkSleep:%3d XLinkSkip:%3d HP0:%d Physical:%d Chmical:%d
+xlink:%s,%s
 XlinkUser
 xLt
 xlu
@@ -54567,6 +55440,7 @@ Zプリパスを選択式にする
 不正なメモリ領域へのデータアクセス
 不正なメモリ領域への命令アクセス
 不調仲間発見
+メモリ不足のため、al::ByamlIterを割り当てる事ができませんでした。
 メモリ不足のため、光点情報を作成できませんでした。
 メモリ不足のため、写真情報を作成できませんでした。
 インパルスを与える点
@@ -54694,6 +55568,7 @@ Zプリパスを選択式にする
 デスクトップへの保存はできませんので、ほかのフォルダを選んでください。
 保守的なラスタライズを有効
 保持 なし
+保持 %p:%s
 個数
 倍率
 キャラクタ倍率
@@ -54709,6 +55584,7 @@ Zプリパスを選択式にする
 停止
 停止タイミング
 停止中
+メモリプロファイラ : 停止中
 停止命令
 ループ停止回数
 コンパクション停止待ち
@@ -54767,6 +55643,7 @@ Zプリパスを選択式にする
 再生
 ＡＳ再生
 再生スピード
+再生中AS %d-%d:%s
 再生中の波形を止めるか
 再生停止時のフェードアウト秒
 再生待ち秒
@@ -54908,6 +55785,7 @@ Zプリパスを選択式にする
 前進
 前進速度
 前進,非前進
+前フレームの重み(0:今だけ,1.0:以前だけ)
 プレーヤの剛体の中心位置
 剛体名
 剛体セット名
@@ -54926,6 +55804,7 @@ Zプリパスを選択式にする
 動物移動種別
 動的マップロード
 動的デプスシャドウ
+動的ヒープ残り:%dk
 動的生成アクタです
 動的シャドウ遠距離フェード終了位置
 動的シャドウ遠距離フェード開始位置
@@ -55148,6 +56027,7 @@ Zプリパスを選択式にする
 埋まり度
 テラインへの埋没情報
 ハイラル城
+城の外 : %d, 中心表示 : %d,  カメラ追随 : %d
 オンのみ基本シグナル
 基本シグナル
 基本の値
@@ -55245,6 +56125,7 @@ Zプリパスを選択式にする
 天井近づき
 天候
 天候影響無視
+天候状態 0:晴 1:曇 2:雨 3:雪
 天候魔法
 天空弾
 太い
@@ -55357,6 +56238,7 @@ Zプリパスを選択式にする
 尻尾
 局所エッジ閾値
 屈む
+屋内判定: 自分 %s、プレイヤー %s
 属性フラグ
 ラネール山氷雪
 ラネール山頂へ帰還
@@ -55594,6 +56476,7 @@ Zプリパスを選択式にする
 怪しむ
 怯む
 スプラインノード情報
+アクタ情報:%d（ロード済み:%d) インスタンス:%d
 このスロットのインパルス情報を使うかどうか
 情報を格納するバッファの数
 リンクの想定数を越えました。テストで無ければプログラマに相談
@@ -55779,6 +56662,7 @@ Zプリパスを選択式にする
 攻撃準備
 攻撃状態のケミカルサイズ
 攻撃発生
+攻撃的衝撃力を受けるかどうか(Ex:ボコブリンの石)
 攻撃禁止
 攻撃移動
 攻撃終了
@@ -55789,6 +56673,7 @@ Zプリパスを選択式にする
 放物攻撃
 放電距離倍率
 放電距離倍率(水の漏電)
+救った数 High:%d Low:%d
 ミー散乱係数
 レイリー散乱係数
 散乱非対称性定数
@@ -55998,6 +56883,7 @@ Zプリパスを選択式にする
 梯子
 梯子から壁登り
 まよいの森
+森: %.2f
 森の中にいる度合い
 森の入場待ち
 森林の塔
@@ -56198,6 +57084,7 @@ Zプリパスを選択式にする
 ワープ消失
 ケミカル消失
 消滅
+消滅攻撃有効(Ex:古代の矢)
 消える閾値
 深さ
 深さ(Rea)
@@ -56274,6 +57161,18 @@ Zプリパスを選択式にする
 濃さ（DRC）
 濃さとTVとDRCでわける
 フォグ濃度
+濃度:ＢＭ
+濃度:VFog
+濃度:強風
+濃度:暗闇
+濃度:火粉
+濃度:灼熱
+濃度:砂嵐
+濃度:胞子
+濃度:雨
+濃度:雨後
+濃度:雷
+濃度:霧
 濃さ調整
 濡れ
 濡れ具合
@@ -56384,6 +57283,7 @@ Zプリパスを選択式にする
 珼Bh9
 現れる
 現在のサウンド出力モード
+現在のコントローラー振動:
 現状維持カメラ
 シーン環境
 スナップショット - 環境マップ
@@ -56412,6 +57312,7 @@ Zプリパスを選択式にする
 のライトを生成します。
 生成グループ
 生成するリフレクションのミップレベル
+アクタ生成リトライ:%d
 生成中
 ステージ生成中
 生成中だったプロセスの初期化完了を待機
@@ -56730,6 +57631,7 @@ Zプリパスを選択式にする
 経由点移動
 シーン経過時間
 結果のテクスチャフィルタをLinearにする
+トラバース結果  pre-actor:%d actor:%d
 絞り
 絞り(ラフネス最大)
 ミップマップにぼけた絵を生成
@@ -56788,6 +57690,7 @@ Zプリパスを選択式にする
 聞く
 肋骨掴み
 肌の色
+股(Leg_1_L/R:Y)
 肩(Clavicle_L/R)
 背景バッファ
 背負いもの
@@ -56798,6 +57701,7 @@ Zプリパスを選択式にする
 胴後方
 脅威感知
 脅威解除
+脚(Leg_1_L/R:X)
 脱出
 脱着状態
 腕なし
@@ -56878,6 +57782,8 @@ Zプリパスを選択式にする
 落雷　
 落雷スタン
 落雷ダメージ
+落雷対象chm::Object: %2d.
+落雷対象Tree:%2d.
 落雷後待機
 落雷攻撃
 落雷攻撃前移動
@@ -56920,6 +57826,8 @@ Zプリパスを選択式にする
 モデル表示状態
 表示エリア範囲
 表示距離
+表示距離:%.1f　(設定値:%.1f)
+表示距離 速度:%5.2f 表示距離:%3.2f
 表面生成
 被写界深度
 ペイント被写界深度
@@ -56961,6 +57869,7 @@ Zプリパスを選択式にする
 見失った時のフェードアウト秒
 見張り
 シーカーストーンを見る待機
+視点:%d
 視点位置
 カメラの視点位置
 視点座標系にする
@@ -56991,8 +57900,13 @@ Zプリパスを選択式にする
 解除
 キュー計算
 計算タイプ
+計算:%3d 描画:%3d ビヘイビア:%3d クロス:%3d ラグドール:%3d
+計算スキップ可能:%3d  リセット後:%d アテンション:%d
+計算数 High:%d Low:%d  エントリ数 Hit:%d Low:%d
 計算する最大距離
+計算スキップ禁止距離:%f
 計算ジョブ詰め抑制 %d
+メモリプロファイラ : 記録中…
 記録終了
 記録開始
 シーン設定
@@ -57020,6 +57934,7 @@ Zプリパスを選択式にする
 誘導(騎乗)
 レイヒット誤差の基数
 レイヒット誤差の指数のスケール
+マテリアルが読み込まれていないのに Scene::setMaterialUVWInfo が処理されました！
 ◎読み込み中◎
 読み込み中デバッグボード
 アイドル,リソース読み込み,セットアップ,再生,削除,復元,終了,コンテニュー
@@ -57126,6 +58041,7 @@ Zプリパスを選択式にする
 追加効果
 ランダムループ追加回数
 追加攻撃
+追加の計算源の数:%d
 追尾
 追従
 プレイヤー追従
@@ -57301,12 +58217,14 @@ Zプリパスを選択式にする
 リソースキャッシュクリア開始
 開始フレーム
 開始オフセット
+開始タイプ:%s  非参加アクタ:%s
 の開始位置
 アウトロ開始前の待ち秒
 デモ開始前の撮影
 イベント開始待ち
 シーン開始イベントスタート待ち
 デモ開始待ち
+イベント開始待機中:%4.2f/%d
 のクロスフェード開始待ち秒
 フェードアウト開始までの待ち秒
 チャンスタイム開始待ち秒
@@ -57367,6 +58285,7 @@ Zプリパスを選択式にする
 雷攻撃無効化
 雷（近距離）
 電
+電圧:%05.1f%sV,
 電気伝導速度倍率
 電気弾無効時小ダメージアクションをとるか
 電気の遺物
@@ -57458,6 +58377,7 @@ Zプリパスを選択式にする
 駆け寄り
 騎乗
 プレイヤー騎乗
+騎乗スケール:%3.2f
 騎乗中
 騎乗待ち
 騎乗無し
