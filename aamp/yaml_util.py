@@ -1,5 +1,6 @@
 from aamp.parameters import *
 from aamp.botw_hashed_names import hash_to_name_map
+from aamp.botw_numbered_names import numbered_name_list
 import yaml
 import zlib
 
@@ -38,6 +39,14 @@ def represent_dict(dumper, mapping, flow_style=None):
 def _fields(data) -> list:
     return [getattr(data, x) for x in data.__slots__]
 
+def _test_possible_numbered_names(idx: int, wanted_hash: int) -> str:
+    for nname in numbered_name_list:
+        for i in range(idx + 1):
+            possible_name = nname % i
+            if zlib.crc32(possible_name.encode()) == wanted_hash:
+                return possible_name
+    return ''
+
 def _get_pstruct_name(reader, idx: int, k: int, parent_crc32: int) -> typing.Union[int, str]:
     name = reader._crc32_to_string_map.get(k, None)
     if name is not None:
@@ -50,6 +59,9 @@ def _get_pstruct_name(reader, idx: int, k: int, parent_crc32: int) -> typing.Uni
     # Try to guess the name from the parent parameter list name if possible.
     parent_name = hash_to_name_map.get(parent_crc32, None)
     if parent_name is None:
+        nname = _test_possible_numbered_names(idx, k)
+        if nname:
+            return nname
         return k
 
     def generate_possible_names(p: str):
@@ -67,6 +79,10 @@ def _get_pstruct_name(reader, idx: int, k: int, parent_crc32: int) -> typing.Uni
         for possible_name in generate_possible_names(parent_name2):
             if zlib.crc32(possible_name.encode()) == k:
                 return possible_name
+
+    nname = _test_possible_numbered_names(idx, k)
+    if nname:
+        return nname
 
     # No luck. Use the CRC32 as key.
     return k
