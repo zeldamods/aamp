@@ -9,12 +9,7 @@ import yaml
 import aamp
 import aamp.yaml_util as yu
 
-def aamp_to_yml() -> None:
-    parser = argparse.ArgumentParser(description='Converts a parameter archive to YAML.')
-    parser.add_argument('aamp', help='Path to a parameter archive (AAMP) file', nargs='?', default='-')
-    parser.add_argument('yml', help='Path to destination YAML file', nargs='?', default='-')
-    args = parser.parse_args()
-
+def do_aamp_to_yml(args) -> None:
     dumper = yaml.CDumper
     yu.register_representers(dumper)
 
@@ -33,12 +28,14 @@ def aamp_to_yml() -> None:
             dumper.__aamp_reader = reader
             yaml.dump(root, output, Dumper=dumper, allow_unicode=True, encoding='utf-8')
 
-def yml_to_aamp() -> None:
-    parser = argparse.ArgumentParser(description='Converts a YAML file to a parameter archive (AAMP).')
-    parser.add_argument('yml', help='Path to a YAML file', nargs='?', default='-')
-    parser.add_argument('aamp', help='Path to destination AAMP file', nargs='?', default='-')
+def aamp_to_yml() -> None:
+    parser = argparse.ArgumentParser(description='Converts a parameter archive to YAML.')
+    parser.add_argument('aamp', help='Path to a parameter archive (AAMP) file', nargs='?', default='-')
+    parser.add_argument('yml', help='Path to destination YAML file', nargs='?', default='-')
     args = parser.parse_args()
+    do_aamp_to_yml(args)
 
+def do_yml_to_aamp(args) -> None:
     loader = yaml.CSafeLoader
     yu.register_constructors(loader)
 
@@ -58,3 +55,10 @@ def yml_to_aamp() -> None:
         output = sys.stdout.buffer if args.aamp == '-' else open(args.aamp, 'wb')
         with output:
             shutil.copyfileobj(buf, output)
+
+def yml_to_aamp(parser) -> None:
+    parser = argparse.ArgumentParser(description='Converts a YAML file to a parameter archive (AAMP).')
+    parser.add_argument('yml', help='Path to a YAML file', nargs='?', default='-')
+    parser.add_argument('aamp', help='Path to destination AAMP file', nargs='?', default='-')
+    args = parser.parse_args()
+    do_yml_to_aamp(args)
