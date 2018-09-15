@@ -1,6 +1,7 @@
 from aamp.parameters import *
 from aamp.botw_hashed_names import hash_to_name_map
 from aamp.botw_numbered_names import numbered_name_list
+import functools
 import yaml
 import zlib
 
@@ -39,6 +40,7 @@ def represent_dict(dumper, mapping, flow_style=None):
 def _fields(data) -> list:
     return [getattr(data, x) for x in data.__slots__]
 
+@functools.lru_cache(maxsize=None)
 def _test_possible_numbered_names(idx: int, wanted_hash: int) -> str:
     for nname in numbered_name_list:
         for i in range(idx + 2):
