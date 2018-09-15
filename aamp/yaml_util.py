@@ -41,7 +41,7 @@ def _fields(data) -> list:
 
 def _test_possible_numbered_names(idx: int, wanted_hash: int) -> str:
     for nname in numbered_name_list:
-        for i in range(idx + 1):
+        for i in range(idx + 2):
             possible_name = nname % i
             if zlib.crc32(possible_name.encode()) == wanted_hash:
                 return possible_name
