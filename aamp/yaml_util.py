@@ -76,13 +76,13 @@ def _get_pstruct_name(reader, idx: int, k: int, parent_crc32: int) -> typing.Uni
             return possible_name
 
     # Sometimes the parent name is plural and the object names are singular.
-    if parent_name[-1] == 's' or parent_name == 'Children':
-        parent_name2 = 'Child' if parent_name == 'Children' else parent_name[:-1]
-        for possible_name in generate_possible_names(parent_name2):
+    if parent_name == 'Children':
+        for possible_name in generate_possible_names('Child'):
             if zlib.crc32(possible_name.encode()) == k:
                 return possible_name
-        if parent_name.endswith('es'):
-            for possible_name in generate_possible_names(parent_name[:-2]):
+    for suffix in ('s', 'es', 'List'):
+        if parent_name.endswith(suffix):
+            for possible_name in generate_possible_names(parent_name[:-len(suffix)]):
                 if zlib.crc32(possible_name.encode()) == k:
                     return possible_name
 

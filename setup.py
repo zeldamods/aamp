@@ -6,7 +6,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="aamp",
-    version="1.2.1",
+    version="1.2.2",
     author="leoetlino",
     author_email="leo@leolam.fr",
     description="Nintendo parameter archive (AAMP) library",
