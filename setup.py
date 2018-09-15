@@ -26,8 +26,8 @@ setuptools.setup(
     entry_points = {
         'console_scripts': [
             'aamp = aamp.__main__:main',
-            'aamp_to_yml = aamp.__main__:aamp_to_yml',
-            'yml_to_aamp = aamp.__main__:yml_to_aamp'
+            'aamp_to_yml = aamp.__main__:main',
+            'yml_to_aamp = aamp.__main__:main'
         ]
     },
 )
