@@ -81,6 +81,10 @@ def _get_pstruct_name(reader, idx: int, k: int, parent_crc32: int) -> typing.Uni
         for possible_name in generate_possible_names(parent_name2):
             if zlib.crc32(possible_name.encode()) == k:
                 return possible_name
+        if parent_name.endswith('es'):
+            for possible_name in generate_possible_names(parent_name[:-2]):
+                if zlib.crc32(possible_name.encode()) == k:
+                    return possible_name
 
     nname = _test_possible_numbered_names(idx, k)
     if nname:
