@@ -66,25 +66,28 @@ def _get_pstruct_name(reader, idx: int, k: int, parent_crc32: int) -> typing.Uni
             return nname
         return k
 
-    def generate_possible_names(p: str):
-        return (f'{p}{idx}', f'{p}_{idx}', \
-                f'{p}{idx:02}', f'{p}_{idx:02}', \
-                f'{p}{idx:03}', f'{p}_{idx:03}')
+    def generate_possible_names(p: str, i: int):
+        return (f'{p}{i}', f'{p}_{i}', \
+                f'{p}{i:02}', f'{p}_{i:02}', \
+                f'{p}{i:03}', f'{p}_{i:03}')
 
-    for possible_name in generate_possible_names(parent_name):
-        if zlib.crc32(possible_name.encode()) == k:
-            return possible_name
+    for i in (idx, idx + 1):
+        for possible_name in generate_possible_names(parent_name, i):
+            if zlib.crc32(possible_name.encode()) == k:
+                return possible_name
 
     # Sometimes the parent name is plural and the object names are singular.
     if parent_name == 'Children':
-        for possible_name in generate_possible_names('Child'):
-            if zlib.crc32(possible_name.encode()) == k:
-                return possible_name
-    for suffix in ('s', 'es', 'List'):
-        if parent_name.endswith(suffix):
-            for possible_name in generate_possible_names(parent_name[:-len(suffix)]):
+        for i in (idx, idx + 1):
+            for possible_name in generate_possible_names('Child', i):
                 if zlib.crc32(possible_name.encode()) == k:
                     return possible_name
+    for suffix in ('s', 'es', 'List'):
+        if parent_name.endswith(suffix):
+            for i in (idx, idx + 1):
+                for possible_name in generate_possible_names(parent_name[:-len(suffix)], i):
+                    if zlib.crc32(possible_name.encode()) == k:
+                        return possible_name
 
     nname = _test_possible_numbered_names(idx, k)
     if nname:
