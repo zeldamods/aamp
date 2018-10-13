@@ -1,12 +1,14 @@
 import fastentrypoints
 import setuptools
+import versioneer
 
 with open("README.md", "r") as fh:
     long_description = fh.read()
 
 setuptools.setup(
     name="aamp",
-    version="1.2.2",
+    version=versioneer.get_version(),
+    cmdclass=versioneer.get_cmdclass(),
     author="leoetlino",
     author_email="leo@leolam.fr",
     description="Nintendo parameter archive (AAMP) library",
