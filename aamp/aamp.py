@@ -253,8 +253,17 @@ class Writer:
         # Write parameter lists recursively, starting from the root list.
         self._write_list(stream, *next(iter(self._pio.lists.items())))
         # Actually write list data now.
+        list_contexts = []
         while self._lists:
-            self._write_list_data(stream, self._lists.popleft())
+            list_contexts.append(self._lists.popleft())
+            self._write_list_data(stream, list_contexts[-1])
+        # While not strictly necessary, write all lists before writing objects
+        # to match Nintendo's official binary parameter archive tool and
+        # to prevent aamptool from choking on generated AAMPs.
+        for ctx in list_contexts:
+            ctx.obj_offset_writer.write_offset_16(stream.tell())
+            for cobj_crc32, cobj in ctx.plist.objects.items():
+                self._write_object(stream, cobj_crc32, cobj)
 
         while self._objs:
             self._write_object_data(stream, self._objs.popleft())
@@ -295,10 +304,6 @@ class Writer:
         ctx.list_offset_writer.write_offset_16(stream.tell())
         for clist_crc32, clist in ctx.plist.lists.items():
             self._write_list(stream, clist_crc32, clist)
-
-        ctx.obj_offset_writer.write_offset_16(stream.tell())
-        for cobj_crc32, cobj in ctx.plist.objects.items():
-            self._write_object(stream, cobj_crc32, cobj)
 
     def _write_object(self, stream: typing.BinaryIO, crc32: int, pobj: ParameterObject) -> None:
         self._num_objs += 1
