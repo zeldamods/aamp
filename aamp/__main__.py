@@ -2,31 +2,18 @@
 import argparse
 import io
 import os
-import shutil
 import sys
 import typing
 import yaml
 
 import aamp
-import aamp.yaml_util as yu
+import aamp.converters
 
-def do_aamp_to_yml(input_data: bytes, output: typing.TextIO) -> None:
-    dumper = yaml.CDumper
-    yu.register_representers(dumper)
-    reader = aamp.Reader(input_data)
-    root = reader.parse()
-    dumper.__aamp_reader = reader
-    yaml.dump(root, output, Dumper=dumper, allow_unicode=True, encoding='utf-8')
+def do_aamp_to_yml(input_data: bytes, output: typing.BinaryIO) -> None:
+    output.write(aamp.converters.aamp_to_yml(input_data))
 
 def do_yml_to_aamp(input_data: bytes, output: typing.BinaryIO) -> None:
-    loader = yaml.CSafeLoader
-    yu.register_constructors(loader)
-
-    root = yaml.load(input_data, Loader=loader)
-    buf = io.BytesIO()
-    aamp.Writer(root).write(buf)
-    buf.seek(0)
-    shutil.copyfileobj(buf, output)
+    output.write(aamp.converters.yml_to_aamp(input_data))
 
 def main() -> None:
     parser = argparse.ArgumentParser(description='Converts Nintendo parameter archives (AAMP) to a binary or YAML form')
@@ -49,7 +36,7 @@ def main() -> None:
     if len(input_data) <= 0x30 or input_data[0:8] != b'AAMP\x02\x00\x00\x00':
         do_yml_to_aamp(input_data, sys.stdout.buffer if dst == '-' else open(dst, 'wb'))
     else:
-        do_aamp_to_yml(input_data, sys.stdout if dst == '-' else open(dst, 'w', encoding='utf-8'))
+        do_aamp_to_yml(input_data, sys.stdout.buffer if dst == '-' else open(dst, 'wb', encoding='utf-8'))
 
 if __name__ == '__main__':
     main()
