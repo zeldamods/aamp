@@ -1,3 +1,4 @@
+AS
 Sword-Small
 Sword-Middle
 Sword-Large
