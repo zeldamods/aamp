@@ -33,10 +33,11 @@ def main() -> None:
         sys.stderr.write('error: cannot use !! (for input filename) when reading from stdin\n')
         sys.exit(1)
 
+    output = sys.stdout.buffer if dst == '-' else open(dst, 'wb')
     if len(input_data) <= 0x30 or input_data[0:8] != b'AAMP\x02\x00\x00\x00':
-        do_yml_to_aamp(input_data, sys.stdout.buffer if dst == '-' else open(dst, 'wb'))
+        do_yml_to_aamp(input_data, output)
     else:
-        do_aamp_to_yml(input_data, sys.stdout.buffer if dst == '-' else open(dst, 'wb', encoding='utf-8'))
+        do_aamp_to_yml(input_data, output)
 
 if __name__ == '__main__':
     main()
