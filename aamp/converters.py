@@ -8,7 +8,7 @@ import aamp.yaml_util as yu
 def aamp_to_yml(input_data: bytes) -> bytes:
     dumper = yaml.CDumper
     yu.register_representers(dumper)
-    reader = aamp.Reader(input_data)
+    reader = aamp.Reader(input_data, track_strings=True)
     root = reader.parse()
     dumper.__aamp_reader = reader
     return yaml.dump(root, Dumper=dumper, allow_unicode=True, encoding='utf-8')

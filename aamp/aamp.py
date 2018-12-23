@@ -13,9 +13,10 @@ class HeaderFlags(IntFlag):
     UTF8 = 1 << 1
 
 class Reader:
-    def __init__(self, data: bytes) -> None:
+    def __init__(self, data: bytes, track_strings: bool = False) -> None:
         self._data = data
         self._crc32_to_string_map: typing.Dict[int, str] = dict()
+        self._track_strings = track_strings
 
         magic = self._data[0:4]
         if magic != b'AAMP':
@@ -74,8 +75,10 @@ class Reader:
     def _parse_param_str(self, offset: int, data_offset: int, str_class, max_size: int) -> typing.Any:
         data_size = self._get_param_data_size(offset)
         string_len = data_size if max_size == -1 else min(data_size, max_size)
-        s = self._data[data_offset:data_offset + string_len].decode()
-        self._register_string(s)
+        b = self._data[data_offset:data_offset + string_len]
+        s = b.decode()
+        if self._track_strings:
+            self._register_string(b, s)
         return str_class(s)
 
     def _parse_param(self, offset: int) -> typing.Tuple[int, typing.Any]:
@@ -208,8 +211,8 @@ class Reader:
 
         return 0
 
-    def _register_string(self, s: str) -> None:
-        self._crc32_to_string_map[zlib.crc32(s.encode())] = s
+    def _register_string(self, b: bytes, s: str) -> None:
+        self._crc32_to_string_map[zlib.crc32(b)] = s
 
 class _ListWriteContext(typing.NamedTuple):
     list_offset_writer: PlaceholderOffsetWriter
