@@ -73,10 +73,7 @@ class Reader:
         return (crc32, param_obj)
 
     def _parse_param_str(self, offset: int, data_offset: int, str_class, max_size: int) -> typing.Any:
-        data_size = 0
-        while get_u8(self._data, data_offset + data_size) != 0:
-            data_size += 1
-
+        data_size = self._data.find(0, data_offset) - data_offset
         string_len = data_size if max_size == -1 else min(data_size, max_size)
         b = self._data[data_offset:data_offset + string_len]
         s = b.decode()
