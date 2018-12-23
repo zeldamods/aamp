@@ -73,7 +73,10 @@ class Reader:
         return (crc32, param_obj)
 
     def _parse_param_str(self, offset: int, data_offset: int, str_class, max_size: int) -> typing.Any:
-        data_size = self._get_param_data_size(offset)
+        data_size = 0
+        while get_u8(self._data, data_offset + data_size) != 0:
+            data_size += 1
+
         string_len = data_size if max_size == -1 else min(data_size, max_size)
         b = self._data[data_offset:data_offset + string_len]
         s = b.decode()
@@ -113,7 +116,7 @@ class Reader:
         or param_type == ParameterType.Curve2 \
         or param_type == ParameterType.Curve3 \
         or param_type == ParameterType.Curve4:
-            num_curves = self._get_param_data_size(offset) // 0x80
+            num_curves = param_type - ParameterType.Curve1 + 1
             value = Curve()
             for i in range(num_curves):
                 value.v.extend(get_u32(self._data, data_offset + 0x80*i + 4*x) for x in range(2))
@@ -129,14 +132,14 @@ class Reader:
         elif param_type == ParameterType.Int:
             value = get_s32(self._data, data_offset)
         elif param_type == ParameterType.BufferInt:
-            value = [None] * (self._get_param_data_size(offset) >> 2)
+            value = [None] * get_u32(self._data, data_offset - 4)
             for i in range(len(value)):
                 value[i] = get_s32(self._data, data_offset + 4*i)
 
         elif param_type == ParameterType.U32:
             value = U32(get_u32(self._data, data_offset))
         elif param_type == ParameterType.BufferU32:
-            value = [None] * (self._get_param_data_size(offset) >> 2)
+            value = [None] * get_u32(self._data, data_offset - 4)
             for i in range(len(value)):
                 value[i] = U32(get_u32(self._data, data_offset + 4*i))
 
@@ -146,70 +149,18 @@ class Reader:
             # Though this shouldn't really matter since we target BotW parameter archives.
             value = get_f32(self._data, data_offset)
         elif param_type == ParameterType.BufferF32:
-            value = [None] * (self._get_param_data_size(offset) >> 2)
+            value = [None] * get_u32(self._data, data_offset - 4)
             for i in range(len(value)):
                 value[i] = get_f32(self._data, data_offset + 4*i)
 
         elif param_type == ParameterType.BufferBinary:
-            buffer_size = self._get_param_data_size(offset)
+            buffer_size = get_u32(self._data, data_offset - 4)
             value = self._data[data_offset:data_offset + buffer_size]
 
         else:
             raise ValueError('Unknown parameter type: %u' % param_type)
 
         return (crc32, value)
-
-    def _get_param_data_size(self, offset: int) -> int:
-        field_4 = get_u32(self._data, offset + 4)
-        data_offset = offset + 4 * (field_4 & 0xffffff)
-        ptype = field_4 >> 24
-
-        if ptype == ParameterType.Bool \
-        or ptype == ParameterType.F32 \
-        or ptype == ParameterType.Int \
-        or ptype == ParameterType.U32:
-            return 4
-
-        if ptype == ParameterType.Vec2:
-            return 8
-
-        if ptype == ParameterType.Vec3:
-            return 0xc
-
-        if ptype == ParameterType.Vec4 \
-        or ptype == ParameterType.Color \
-        or ptype == ParameterType.Quat:
-            return 0x10
-
-        if ptype == ParameterType.String32 \
-        or ptype == ParameterType.String64 \
-        or ptype == ParameterType.String256 \
-        or ptype == ParameterType.StringRef:
-            i = 0
-            while get_u8(self._data, data_offset + i) != 0:
-                i += 1
-                if i >= 0x80000:
-                    return 0
-            return i
-
-        if ptype == ParameterType.Curve1:
-            return 0x80
-        if ptype == ParameterType.Curve2:
-            return 0x100
-        if ptype == ParameterType.Curve3:
-            return 0x180
-        if ptype == ParameterType.Curve4:
-            return 0x200
-
-        if ptype == ParameterType.BufferInt \
-        or ptype == ParameterType.BufferF32 \
-        or ptype == ParameterType.BufferU32:
-            return 4 * get_u32(self._data, data_offset - 4)
-
-        if ptype == ParameterType.BufferBinary:
-            return get_u32(self._data, data_offset - 4)
-
-        return 0
 
     def _register_string(self, b: bytes, s: str) -> None:
         self._crc32_to_string_map[zlib.crc32(b)] = s
