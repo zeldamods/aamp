@@ -2,6 +2,7 @@
 # Licensed under GPLv2+
 from collections import deque, defaultdict
 from enum import IntFlag
+import io
 import typing
 import zlib
 
@@ -174,6 +175,11 @@ class _ObjWriteContext(typing.NamedTuple):
 class Writer:
     def __init__(self, param_io: ParameterIO) -> None:
         self._pio = param_io
+    
+    def get_bytes(self) -> bytes:
+        stream = io.BytesIO()
+        self.write(stream)
+        return stream.getvalue()
 
     def write(self, stream: typing.BinaryIO) -> None:
         self._num_lists = 0
