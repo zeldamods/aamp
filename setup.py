@@ -24,7 +24,7 @@ setuptools.setup(
     ],
     include_package_data=True,
     python_requires='>=3.6',
-    install_requires=['PyYAML~=3.12'],
+    install_requires=['PyYAML~=5.1'],
     entry_points = {
         'console_scripts': [
             'aamp = aamp.__main__:main',

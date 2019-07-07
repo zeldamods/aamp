@@ -11,7 +11,7 @@ def aamp_to_yml(input_data: bytes) -> bytes:
     reader = aamp.Reader(input_data, track_strings=True)
     root = reader.parse()
     dumper.__aamp_reader = reader
-    return yaml.dump(root, Dumper=dumper, allow_unicode=True, encoding='utf-8')
+    return yaml.dump(root, Dumper=dumper, allow_unicode=True, encoding='utf-8', default_flow_style=None)
 
 def yml_to_aamp(input_data: bytes) -> bytes:
     loader = yaml.CSafeLoader
