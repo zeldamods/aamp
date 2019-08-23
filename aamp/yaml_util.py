@@ -162,7 +162,7 @@ def register_constructors(loader) -> None:
     yaml.add_constructor('!vec4', lambda l, node: Vec4(*l.construct_sequence(node)), Loader=loader)
     yaml.add_constructor('!color', lambda l, node: Color(*l.construct_sequence(node)), Loader=loader)
     yaml.add_constructor('!quat', lambda l, node: Quat(*l.construct_sequence(node)), Loader=loader)
-    yaml.add_constructor('!curve', lambda l, node: Curve(*l.construct_sequence(node)), Loader=loader)
+    yaml.add_constructor('!curve', lambda l, node: Curve(l.construct_sequence(node)), Loader=loader)
     yaml.add_constructor('!str32', lambda l, node: String32(l.construct_yaml_str(node)), Loader=loader)
     yaml.add_constructor('!str64', lambda l, node: String64(l.construct_yaml_str(node)), Loader=loader)
     yaml.add_constructor('!str256', lambda l, node: String256(l.construct_yaml_str(node)), Loader=loader)
