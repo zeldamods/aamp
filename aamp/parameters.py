@@ -1,4 +1,5 @@
 import abc
+import operator
 from enum import IntEnum
 import typing
 import zlib
@@ -84,6 +85,14 @@ class Vec2:
         self.y = y
     def __repr__(self) -> str:
         return f'Vec2(x={self.x}, y={self.y})'
+    def __eq__(self, other):
+        if isinstance(other, self.__class__):
+            if self.__slots__ == other.__slots__:
+                 attr_getters = [operator.attrgetter(attr) for attr in self.__slots__]
+                 return all(getter(self) == getter(other) for getter in attr_getters)
+        return False
+    def __ne__(self, other):
+        return not self.__eq__(other)
 
 class Vec3:
     __slots__ = ['x', 'y', 'z']
@@ -93,6 +102,14 @@ class Vec3:
         self.z = z
     def __repr__(self) -> str:
         return f'Vec3(x={self.x}, y={self.y}, z={self.z})'
+    def __eq__(self, other):
+        if isinstance(other, self.__class__):
+            if self.__slots__ == other.__slots__:
+                 attr_getters = [operator.attrgetter(attr) for attr in self.__slots__]
+                 return all(getter(self) == getter(other) for getter in attr_getters)
+        return False
+    def __ne__(self, other):
+        return not self.__eq__(other)
 
 class Vec4:
     __slots__ = ['x', 'y', 'z', 'w']
@@ -103,6 +120,14 @@ class Vec4:
         self.w = w
     def __repr__(self) -> str:
         return f'Vec4(x={self.x}, y={self.y}, z={self.z}, w={self.w})'
+    def __eq__(self, other):
+        if isinstance(other, self.__class__):
+            if self.__slots__ == other.__slots__:
+                 attr_getters = [operator.attrgetter(attr) for attr in self.__slots__]
+                 return all(getter(self) == getter(other) for getter in attr_getters)
+        return False
+    def __ne__(self, other):
+        return not self.__eq__(other)
 
 class Color:
     __slots__ = ['r', 'g', 'b', 'a']
@@ -113,6 +138,14 @@ class Color:
         self.a = a
     def __repr__(self) -> str:
         return f'Color(r={self.r}, g={self.g}, b={self.b}, a={self.a})'
+    def __eq__(self, other):
+        if isinstance(other, self.__class__):
+            if self.__slots__ == other.__slots__:
+                 attr_getters = [operator.attrgetter(attr) for attr in self.__slots__]
+                 return all(getter(self) == getter(other) for getter in attr_getters)
+        return False
+    def __ne__(self, other):
+        return not self.__eq__(other)
 
 class String32(str):
     def __repr__(self) -> str:
@@ -140,11 +173,25 @@ class Quat:
 
     def __repr__(self) -> str:
         return f'Quat({self.a},{self.b},{self.c},{self.d})'
+    def __eq__(self, other):
+        if isinstance(other, self.__class__):
+            if self.__slots__ == other.__slots__:
+                 attr_getters = [operator.attrgetter(attr) for attr in self.__slots__]
+                 return all(getter(self) == getter(other) for getter in attr_getters)
+        return False
+    def __ne__(self, other):
+        return not self.__eq__(other)
 
 class Curve:
     __slots__ = ['v']
     def __init__(self, v=None) -> None:
         self.v = v if v else []
+    def __eq__(self, other):
+        if isinstance(other, self.__class__):
+            return self.v == other.v
+        return False
+    def __ne__(self, other):
+        return not self.__eq__(other)
 
 def value_to_bytes(v: typing.Any) -> typing.Tuple[ParameterType, bytes]:
     if isinstance(v, bool):
