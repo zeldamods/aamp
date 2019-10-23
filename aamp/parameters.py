@@ -82,7 +82,7 @@ class ParameterIO(ParameterList):
 @dataclass
 class Vec2:
     __slots__ = ['x', 'y']
-    x: float
+    x: float = 0.0
     y: float
 
 @dataclass
