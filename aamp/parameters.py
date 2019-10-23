@@ -80,28 +80,28 @@ class ParameterIO(ParameterList):
 
 @dataclass
 class Vec2:
-    x: float
-    y: float
+    x: float = 0.0
+    y: float = 0.0
 
 @dataclass
 class Vec3:
-    x: float
-    y: float
-    z: float
+    x: float = 0.0
+    y: float = 0.0
+    z: float = 0.0
 
 @dataclass
 class Vec4:
-    x: float
-    y: float
-    z: float
-    w: float
+    x: float = 0.0
+    y: float = 0.0
+    z: float = 0.0
+    w: float = 0.0
 
 @dataclass
 class Color:
-    r: float
-    g: float
-    b: float
-    a: float
+    r: float = 0.0
+    g: float = 0.0
+    b: float = 0.0
+    a: float = 0.0
 
 class String32(str):
     def __repr__(self) -> str:
@@ -121,10 +121,10 @@ class U32(int):
 
 @dataclass
 class Quat:
-    a: float
-    b: float
-    c: float
-    d: float
+    a: float = 0.0
+    b: float = 0.0
+    c: float = 0.0
+    d: float = 0.0
 
 @dataclass
 class Curve:
