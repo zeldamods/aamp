@@ -38,7 +38,7 @@ def represent_dict(dumper, mapping, flow_style=None):
     return represent_mapping(dumper, 'tag:yaml.org,2002:map', mapping, flow_style)
 
 def _fields(data) -> list:
-    return [getattr(data, x) for x in data.__slots__]
+    return list(data.__dict__.values())
 
 @functools.lru_cache(maxsize=None)
 def _test_possible_numbered_names(idx: int, wanted_hash: int) -> str:

@@ -1,4 +1,5 @@
 import abc
+from dataclasses import dataclass, field
 from enum import IntEnum
 import typing
 import zlib
@@ -77,42 +78,30 @@ class ParameterIO(ParameterList):
     def __repr__(self) -> str:
         return f'ParameterIO(type_={self.type}, version={self.version}, lists={repr(self.lists)})'
 
+@dataclass
 class Vec2:
-    __slots__ = ['x', 'y']
-    def __init__(self, x=0.0, y=0.0) -> None:
-        self.x = x
-        self.y = y
-    def __repr__(self) -> str:
-        return f'Vec2(x={self.x}, y={self.y})'
+    x: float = 0.0
+    y: float = 0.0
 
+@dataclass
 class Vec3:
-    __slots__ = ['x', 'y', 'z']
-    def __init__(self, x=0.0, y=0.0, z=0.0) -> None:
-        self.x = x
-        self.y = y
-        self.z = z
-    def __repr__(self) -> str:
-        return f'Vec3(x={self.x}, y={self.y}, z={self.z})'
+    x: float = 0.0
+    y: float = 0.0
+    z: float = 0.0
 
+@dataclass
 class Vec4:
-    __slots__ = ['x', 'y', 'z', 'w']
-    def __init__(self, x=0.0, y=0.0, z=0.0, w=0.0) -> None:
-        self.x = x
-        self.y = y
-        self.z = z
-        self.w = w
-    def __repr__(self) -> str:
-        return f'Vec4(x={self.x}, y={self.y}, z={self.z}, w={self.w})'
+    x: float = 0.0
+    y: float = 0.0
+    z: float = 0.0
+    w: float = 0.0
 
+@dataclass
 class Color:
-    __slots__ = ['r', 'g', 'b', 'a']
-    def __init__(self, r=0.0, g=0.0, b=0.0, a=0.0) -> None:
-        self.r = r
-        self.g = g
-        self.b = b
-        self.a = a
-    def __repr__(self) -> str:
-        return f'Color(r={self.r}, g={self.g}, b={self.b}, a={self.a})'
+    r: float = 0.0
+    g: float = 0.0
+    b: float = 0.0
+    a: float = 0.0
 
 class String32(str):
     def __repr__(self) -> str:
@@ -130,21 +119,16 @@ class U32(int):
     def __repr__(self) -> str:
         return f'U32({self})'
 
+@dataclass
 class Quat:
-    __slots__ = ['a', 'b', 'c', 'd']
-    def __init__(self, a=0.0, b=0.0, c=0.0, d=0.0) -> None:
-        self.a = a
-        self.b = b
-        self.c = c
-        self.d = d
+    a: float = 0.0
+    b: float = 0.0
+    c: float = 0.0
+    d: float = 0.0
 
-    def __repr__(self) -> str:
-        return f'Quat({self.a},{self.b},{self.c},{self.d})'
-
+@dataclass
 class Curve:
-    __slots__ = ['v']
-    def __init__(self, v=None) -> None:
-        self.v = v if v else []
+    v: list = field(default_factory=list)
 
 def value_to_bytes(v: typing.Any) -> typing.Tuple[ParameterType, bytes]:
     if isinstance(v, bool):
