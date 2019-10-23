@@ -26,7 +26,7 @@ setuptools.setup(
     python_requires='>=3.6',
     install_requires=[
         'PyYAML~=5.1',
-        'dataclasses;python_version=="3.6"'
+        'dataclasses;python_version=="3.6"',
     ],
     entry_points = {
         'console_scripts': [
