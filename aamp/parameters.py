@@ -1,6 +1,5 @@
 import abc
 from dataclasses import dataclass
-import operator
 from enum import IntEnum
 import typing
 import zlib
