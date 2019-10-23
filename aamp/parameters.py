@@ -134,7 +134,7 @@ class Quat:
 @dataclass
 class Curve:
     __slots__ = ['v']
-    v: list
+    v: list = field(default_factory=list)
 
     def __init__(self, v: list = None):
         self.v = v or []
