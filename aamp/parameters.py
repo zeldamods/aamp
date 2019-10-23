@@ -136,9 +136,6 @@ class Curve:
     __slots__ = ['v']
     v: list = field(default_factory=list)
 
-    def __init__(self, v: list = None):
-        self.v = v or []
-
 def value_to_bytes(v: typing.Any) -> typing.Tuple[ParameterType, bytes]:
     if isinstance(v, bool):
         return (ParameterType.Bool, u32(v))
