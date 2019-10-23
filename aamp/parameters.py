@@ -1,4 +1,5 @@
 import abc
+from dataclasses import dataclass
 import operator
 from enum import IntEnum
 import typing
@@ -78,74 +79,34 @@ class ParameterIO(ParameterList):
     def __repr__(self) -> str:
         return f'ParameterIO(type_={self.type}, version={self.version}, lists={repr(self.lists)})'
 
+@dataclass
 class Vec2:
-    __slots__ = ['x', 'y']
-    def __init__(self, x=0.0, y=0.0) -> None:
-        self.x = x
-        self.y = y
-    def __repr__(self) -> str:
-        return f'Vec2(x={self.x}, y={self.y})'
-    def __eq__(self, other):
-        if isinstance(other, self.__class__):
-            if self.__slots__ == other.__slots__:
-                 attr_getters = [operator.attrgetter(attr) for attr in self.__slots__]
-                 return all(getter(self) == getter(other) for getter in attr_getters)
-        return False
-    def __ne__(self, other):
-        return not self.__eq__(other)
+    __slots__ = ('x', 'y')
+    x: float
+    y: float
 
+@dataclass
 class Vec3:
-    __slots__ = ['x', 'y', 'z']
-    def __init__(self, x=0.0, y=0.0, z=0.0) -> None:
-        self.x = x
-        self.y = y
-        self.z = z
-    def __repr__(self) -> str:
-        return f'Vec3(x={self.x}, y={self.y}, z={self.z})'
-    def __eq__(self, other):
-        if isinstance(other, self.__class__):
-            if self.__slots__ == other.__slots__:
-                 attr_getters = [operator.attrgetter(attr) for attr in self.__slots__]
-                 return all(getter(self) == getter(other) for getter in attr_getters)
-        return False
-    def __ne__(self, other):
-        return not self.__eq__(other)
+    __slots__ = ('x', 'y', 'z')
+    x: float
+    y: float
+    z: float
 
+@dataclass
 class Vec4:
-    __slots__ = ['x', 'y', 'z', 'w']
-    def __init__(self, x=0.0, y=0.0, z=0.0, w=0.0) -> None:
-        self.x = x
-        self.y = y
-        self.z = z
-        self.w = w
-    def __repr__(self) -> str:
-        return f'Vec4(x={self.x}, y={self.y}, z={self.z}, w={self.w})'
-    def __eq__(self, other):
-        if isinstance(other, self.__class__):
-            if self.__slots__ == other.__slots__:
-                 attr_getters = [operator.attrgetter(attr) for attr in self.__slots__]
-                 return all(getter(self) == getter(other) for getter in attr_getters)
-        return False
-    def __ne__(self, other):
-        return not self.__eq__(other)
+    __slots__ = ('x', 'y', 'z', 'w')
+    x: float
+    y: float
+    z: float
+    w: float
 
+@dataclass
 class Color:
-    __slots__ = ['r', 'g', 'b', 'a']
-    def __init__(self, r=0.0, g=0.0, b=0.0, a=0.0) -> None:
-        self.r = r
-        self.g = g
-        self.b = b
-        self.a = a
-    def __repr__(self) -> str:
-        return f'Color(r={self.r}, g={self.g}, b={self.b}, a={self.a})'
-    def __eq__(self, other):
-        if isinstance(other, self.__class__):
-            if self.__slots__ == other.__slots__:
-                 attr_getters = [operator.attrgetter(attr) for attr in self.__slots__]
-                 return all(getter(self) == getter(other) for getter in attr_getters)
-        return False
-    def __ne__(self, other):
-        return not self.__eq__(other)
+    __slots__ = ('r', 'g', 'b', 'a')
+    r: float
+    g: float
+    b: float
+    a: float
 
 class String32(str):
     def __repr__(self) -> str:
@@ -163,35 +124,18 @@ class U32(int):
     def __repr__(self) -> str:
         return f'U32({self})'
 
+@dataclass
 class Quat:
-    __slots__ = ['a', 'b', 'c', 'd']
-    def __init__(self, a=0.0, b=0.0, c=0.0, d=0.0) -> None:
-        self.a = a
-        self.b = b
-        self.c = c
-        self.d = d
+    __slots__ = ('a', 'b', 'c', 'd')
+    a: float
+    b: float
+    c: float
+    d: float
 
-    def __repr__(self) -> str:
-        return f'Quat({self.a},{self.b},{self.c},{self.d})'
-    def __eq__(self, other):
-        if isinstance(other, self.__class__):
-            if self.__slots__ == other.__slots__:
-                 attr_getters = [operator.attrgetter(attr) for attr in self.__slots__]
-                 return all(getter(self) == getter(other) for getter in attr_getters)
-        return False
-    def __ne__(self, other):
-        return not self.__eq__(other)
-
+@dataclass
 class Curve:
-    __slots__ = ['v']
-    def __init__(self, v=None) -> None:
-        self.v = v if v else []
-    def __eq__(self, other):
-        if isinstance(other, self.__class__):
-            return self.v == other.v
-        return False
-    def __ne__(self, other):
-        return not self.__eq__(other)
+    __slots__ = ('v')
+    v: list
 
 def value_to_bytes(v: typing.Any) -> typing.Tuple[ParameterType, bytes]:
     if isinstance(v, bool):
