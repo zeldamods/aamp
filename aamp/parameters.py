@@ -81,20 +81,20 @@ class ParameterIO(ParameterList):
 
 @dataclass
 class Vec2:
-    __slots__ = ('x', 'y')
+    __slots__ = ['x', 'y']
     x: float
     y: float
 
 @dataclass
 class Vec3:
-    __slots__ = ('x', 'y', 'z')
+    __slots__ = ['x', 'y', 'z']
     x: float
     y: float
     z: float
 
 @dataclass
 class Vec4:
-    __slots__ = ('x', 'y', 'z', 'w')
+    __slots__ = ['x', 'y', 'z', 'w']
     x: float
     y: float
     z: float
@@ -102,7 +102,7 @@ class Vec4:
 
 @dataclass
 class Color:
-    __slots__ = ('r', 'g', 'b', 'a')
+    __slots__ = ['r', 'g', 'b', 'a']
     r: float
     g: float
     b: float
@@ -126,7 +126,7 @@ class U32(int):
 
 @dataclass
 class Quat:
-    __slots__ = ('a', 'b', 'c', 'd')
+    __slots__ = ['a', 'b', 'c', 'd']
     a: float
     b: float
     c: float
@@ -134,8 +134,11 @@ class Quat:
 
 @dataclass
 class Curve:
-    __slots__ = ('v')
+    __slots__ = ['v']
     v: list
+
+    def __init__(self, v: list = None):
+        self.v = v or []
 
 def value_to_bytes(v: typing.Any) -> typing.Tuple[ParameterType, bytes]:
     if isinstance(v, bool):
