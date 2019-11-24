@@ -50,11 +50,10 @@ def _test_possible_numbered_names(idx: int, wanted_hash: int) -> str:
     return ''
 
 def _get_pstruct_name(reader, idx: int, k: int, parent_crc32: int) -> typing.Union[int, str]:
-    if reader is None:
-        return k
-    name = reader._crc32_to_string_map.get(k, None)
-    if name is not None:
-        return name
+    if reader is not None:
+        name = reader._crc32_to_string_map.get(k, None)
+        if name is not None:
+            return name
 
     name = hash_to_name_map.get(k, None)
     if name is not None:
