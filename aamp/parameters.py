@@ -116,8 +116,7 @@ class String256(str):
         return f'String256({self})'
 
 class U32(int):
-    def __repr__(self) -> str:
-        return f'U32({self})'
+    pass
 
 @dataclass
 class Quat:
