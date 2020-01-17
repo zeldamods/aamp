@@ -58,11 +58,15 @@ class PlaceholderOffsetWriter:
         self._stream.seek(self._offset)
         x = struct.unpack('<I', self._stream.read(4))[0] >> 24
         self._stream.seek(self._offset)
+        if (offset - self._base) % 4 != 0:
+            raise ValueError("Cannot represent offset; it must be divisible by 4")
         self._stream.write(u32((x << 24) | ((offset - self._base) >> 2)))
         self._stream.seek(current_offset)
 
     def write_offset_16(self, offset: int) -> None:
         current_offset = self._stream.tell()
         self._stream.seek(self._offset)
+        if (offset - self._base) % 4 != 0:
+            raise ValueError("Cannot represent offset; it must be divisible by 4")
         self._stream.write(u16((offset - self._base) >> 2))
         self._stream.seek(current_offset)

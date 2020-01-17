@@ -286,6 +286,9 @@ class Writer:
                 for v, writers in self._values:
                     try:
                         offset = v.index(param_bytes)
+                        # Sub-offset must be divisible by 4 in order to be representable.
+                        if offset % 4 != 0:
+                            continue
                         writers.append((offset, p))
                         found = True
                         break
