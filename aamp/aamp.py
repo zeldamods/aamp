@@ -175,7 +175,7 @@ class _ObjWriteContext(typing.NamedTuple):
 class Writer:
     def __init__(self, param_io: ParameterIO) -> None:
         self._pio = param_io
-    
+
     def get_bytes(self) -> bytes:
         stream = io.BytesIO()
         self.write(stream)
